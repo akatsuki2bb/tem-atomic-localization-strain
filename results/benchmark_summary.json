@@ -1,0 +1,137 @@
+{
+  "dataset_hash": "0c27c568765d",
+  "n_folds": 5,
+  "metric_sources": {
+    "no_n2v": [
+      "backfill_eval",
+      "cv_log"
+    ],
+    "with_n2v": [
+      "backfill_eval",
+      "cv_log"
+    ]
+  },
+  "tests": [
+    {
+      "kind": "arch",
+      "metric": "iou",
+      "pair": "AtomSegNet vs HRNet",
+      "delta": 0.012236639857292175,
+      "sd": 0.0014020169755431969,
+      "n": 4,
+      "p": 0.0004097760982377655,
+      "condition": "no_n2v"
+    },
+    {
+      "kind": "arch",
+      "metric": "iou",
+      "pair": "AtomSegNet vs UNetPP",
+      "delta": 0.029815244973481942,
+      "sd": 0.012669251500963633,
+      "n": 3,
+      "p": 0.055246684595089815,
+      "condition": "no_n2v"
+    },
+    {
+      "kind": "arch",
+      "metric": "iou",
+      "pair": "UNetPP vs AtomSegNet",
+      "delta": 0.014295053482055665,
+      "sd": 0.014244122595194982,
+      "n": 5,
+      "p": 0.08822359892200636,
+      "condition": "with_n2v"
+    },
+    {
+      "kind": "arch",
+      "metric": "iou",
+      "pair": "UNetPP vs HRNet",
+      "delta": 0.039012252615066245,
+      "sd": 0.004383271298475249,
+      "n": 2,
+      "p": 0.05047207829798209,
+      "condition": "with_n2v"
+    },
+    {
+      "kind": "n2v",
+      "metric": "psnr",
+      "pair": "AtomSegNet  psnr",
+      "delta": -1.9539016723632812,
+      "sd": 0.2951287686895821,
+      "n": 5,
+      "p": 0.00012121312093271066
+    },
+    {
+      "kind": "n2v",
+      "metric": "psnr",
+      "pair": "UNetPP      psnr",
+      "delta": -3.714180509870251,
+      "sd": 8.728335936631968,
+      "n": 3,
+      "p": 0.53783261279365
+    },
+    {
+      "kind": "n2v",
+      "metric": "psnr",
+      "pair": "HRNet       psnr",
+      "delta": -7.540378173813224,
+      "sd": 3.1566363219484495,
+      "n": 2,
+      "p": 0.1832182338026555
+    },
+    {
+      "kind": "n2v",
+      "metric": "ssim",
+      "pair": "AtomSegNet  ssim",
+      "delta": -0.03632876873016357,
+      "sd": 0.0026623642616459948,
+      "n": 5,
+      "p": 6.873450946608882e-06
+    },
+    {
+      "kind": "n2v",
+      "metric": "ssim",
+      "pair": "UNetPP      ssim",
+      "delta": -0.07190519949600087,
+      "sd": 0.2321648835325245,
+      "n": 3,
+      "p": 0.645335266093912
+    },
+    {
+      "kind": "n2v",
+      "metric": "ssim",
+      "pair": "HRNet       ssim",
+      "delta": -0.13980476623604943,
+      "sd": 0.10275260382528868,
+      "n": 2,
+      "p": 0.30512299441269564
+    },
+    {
+      "kind": "n2v",
+      "metric": "iou",
+      "pair": "AtomSegNet  iou",
+      "delta": -0.031666922569274905,
+      "sd": 0.0012172685307421031,
+      "n": 5,
+      "p": 5.229717595456875e-07
+    },
+    {
+      "kind": "n2v",
+      "metric": "iou",
+      "pair": "UNetPP      iou",
+      "delta": 0.021957167288443696,
+      "sd": 0.015325431098401496,
+      "n": 3,
+      "p": 0.13118148084489417
+    },
+    {
+      "kind": "n2v",
+      "metric": "iou",
+      "pair": "HRNet       iou",
+      "delta": -0.03772732548532076,
+      "sd": 0.00478261458143143,
+      "n": 2,
+      "p": 0.056913504313969576
+    }
+  ]
+}

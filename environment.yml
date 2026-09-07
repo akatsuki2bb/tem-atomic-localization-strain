@@ -1,0 +1,22 @@
+name: tem-quant
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pytorch>=2.1
+  - torchvision
+  - pytorch-cuda=12.1
+  - numpy
+  - pandas
+  - scipy
+  - scikit-image
+  - scikit-learn
+  - opencv
+  - matplotlib
+  - seaborn
+  - pillow
+  - tqdm
+  - jupyterlab
+  - ipykernel

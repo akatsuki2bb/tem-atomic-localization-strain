@@ -1,0 +1,7 @@
+condition,arch,n_folds,f1_mean,f1_sd,precision,recall,absolute_rmse_px,absolute_rmse_sd_px
+no_n2v,AtomSegNet,5,0.9288,0.0098,0.8968,0.9633,1.1275,0.0342
+no_n2v,HRNet,4,0.9207,0.0177,0.8854,0.9591,1.1175,0.0329
+no_n2v,UNetPP,3,0.9185,0.0042,0.8878,0.9514,1.2126,0.0068
+with_n2v,AtomSegNet,5,0.9179,0.0104,0.883,0.9556,1.2448,0.0332
+with_n2v,HRNet,2,0.8999,0.0133,0.8643,0.9387,1.2515,0.0583
+with_n2v,UNetPP,5,0.9214,0.0129,0.8921,0.9528,1.2181,0.0637

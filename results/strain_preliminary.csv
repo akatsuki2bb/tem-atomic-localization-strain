@@ -1,0 +1,4 @@
+condition,arch,folds,frames,valid_strain_fraction,lattice_inlier_fraction,lattice_rmse_fraction,displacement_rms_px,local_fit_residual_median_px,exx_sigma,eyy_sigma,exy_sigma
+no_n2v,AtomSegNet,1,4,0.8743,0.91,0.0377,0.6705,0.5553,0.009591,0.01582,0.00643
+no_n2v,HRNet,1,4,0.7898,0.8244,0.03922,0.7222,0.5864,0.007078,0.01542,0.007609
+no_n2v,UNetPP,1,4,0.8613,0.9298,0.04489,0.8393,0.6158,0.005767,0.01331,0.005866

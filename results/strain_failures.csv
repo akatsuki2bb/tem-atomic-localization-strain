@@ -1,0 +1,25 @@
+sample,reason,n_atoms,n_peaks,n_accepted_fits,condition,arch,fold
+02233,only 5 candidate atoms; need 30,5,5,0,no_n2v,AtomSegNet,1
+00475,only 26 candidate atoms; need 30,26,26,4,no_n2v,AtomSegNet,1
+05611,only 23 candidate atoms; need 30,23,23,2,no_n2v,AtomSegNet,1
+04904,only 22 candidate atoms; need 30,22,22,1,no_n2v,AtomSegNet,1
+04443,only 24 candidate atoms; need 30,24,24,0,no_n2v,AtomSegNet,1
+02821,only 16 candidate atoms; need 30,16,16,4,no_n2v,AtomSegNet,1
+02055,only 10 candidate atoms; need 30,10,10,0,no_n2v,AtomSegNet,1
+01714,only 12 candidate atoms; need 30,12,12,6,no_n2v,AtomSegNet,1
+02233,only 5 candidate atoms; need 30,5,5,0,no_n2v,HRNet,1
+00475,only 25 candidate atoms; need 30,25,25,1,no_n2v,HRNet,1
+05611,only 25 candidate atoms; need 30,25,25,0,no_n2v,HRNet,1
+04904,only 20 candidate atoms; need 30,20,20,0,no_n2v,HRNet,1
+04443,only 24 candidate atoms; need 30,24,24,0,no_n2v,HRNet,1
+02821,only 17 candidate atoms; need 30,17,17,6,no_n2v,HRNet,1
+02055,only 10 candidate atoms; need 30,10,10,0,no_n2v,HRNet,1
+01714,only 12 candidate atoms; need 30,12,12,2,no_n2v,HRNet,1
+02233,only 5 candidate atoms; need 30,5,5,0,no_n2v,UNetPP,1
+00475,only 26 candidate atoms; need 30,26,26,1,no_n2v,UNetPP,1
+05611,only 27 candidate atoms; need 30,27,27,5,no_n2v,UNetPP,1
+04904,only 19 candidate atoms; need 30,19,19,0,no_n2v,UNetPP,1
+04443,only 24 candidate atoms; need 30,24,24,1,no_n2v,UNetPP,1
+02821,only 14 candidate atoms; need 30,14,14,2,no_n2v,UNetPP,1
+02055,only 9 candidate atoms; need 30,9,9,0,no_n2v,UNetPP,1
+01714,only 13 candidate atoms; need 30,13,13,3,no_n2v,UNetPP,1

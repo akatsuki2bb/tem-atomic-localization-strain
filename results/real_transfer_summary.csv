@@ -1,0 +1,7 @@
+condition,arch,folds,coverage,mean_probability,undecided_fraction,intensity_corr,fft_peak_preserved_fraction
+no_n2v,AtomSegNet,5,0.4836,0.4665,0.3086,0.4554,0.8357
+no_n2v,HRNet,4,0.5012,0.4933,0.3813,0.4859,0.8929
+no_n2v,UNetPP,3,0.4678,0.4586,0.3949,0.5357,0.8333
+with_n2v,AtomSegNet,5,0.5616,0.5413,0.3953,0.532,0.8357
+with_n2v,HRNet,2,0.5797,0.5407,0.369,0.4648,0.875
+with_n2v,UNetPP,5,0.5133,0.5021,0.3772,0.4779,0.8286

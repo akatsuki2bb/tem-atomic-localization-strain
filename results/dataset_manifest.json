@@ -1,0 +1,23 @@
+{
+  "data_root": "D:\\UNet\\TEM-ImageNet-v1.3-master_2\\TEM-ImageNet-v1.3-master",
+  "subfolders": {
+    "noisy": "D:\\UNet\\TEM-ImageNet-v1.3-master_2\\TEM-ImageNet-v1.3-master\\image",
+    "clean": "D:\\UNet\\TEM-ImageNet-v1.3-master_2\\TEM-ImageNet-v1.3-master\\noNoise",
+    "mask": "D:\\UNet\\TEM-ImageNet-v1.3-master_2\\TEM-ImageNet-v1.3-master\\circularMask",
+    "gauss": "D:\\UNet\\TEM-ImageNet-v1.3-master_2\\TEM-ImageNet-v1.3-master\\gaussianMask",
+    "coords": "D:\\UNet\\TEM-ImageNet-v1.3-master_2\\TEM-ImageNet-v1.3-master\\position"
+  },
+  "n_paired": 14364,
+  "n_noisy": 14364,
+  "n_clean": 14364,
+  "n_mask": 14364,
+  "n_gauss": 14364,
+  "n_gauss_paired": 14364,
+  "n_coords": 14364,
+  "localization_gt": "gaussianMask",
+  "max_samples": null,
+  "seed": 42,
+  "img_size": 256,
+  "n_folds": 5,
+  "basename_sha1": "0c27c568765d"
+}

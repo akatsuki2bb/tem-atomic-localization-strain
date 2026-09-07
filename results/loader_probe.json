@@ -1,0 +1,9 @@
+{
+  "dataset_hash": "0c27c568765d",
+  "throughput_img_s": 422.5,
+  "source": "memmap cache",
+  "batch": 32,
+  "num_workers": 0,
+  "precision": "bf16",
+  "n2v_masked_unchanged_frac": 0.791
+}
