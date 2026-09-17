@@ -1,12 +1,7 @@
-# Results snapshot
+# Earlier results snapshot
 
-These CSV files reproduce the current research snapshot used in the top-level README.
+This directory preserves the first public evaluation snapshot generated between 7 and 12 September 2026. It contains useful intermediate reports, figures, transfer diagnostics, and large per-pair/per-atom tables, but several architecture-condition groups were incomplete when these files were produced.
 
-**Important:** the architecture-condition matrix is incomplete: 24/30 models are present. Full 5-fold claims should only be made for combinations with `n_folds = 5`.
+Do **not** use this directory for the current model ranking. The authoritative 14 September benchmark is in [`../tables/`](../tables/), where every listed configuration has five folds.
 
-- `current_segmentation_summary.csv`: held-out detection and absolute localization
-- `atomsegnet_shift_precision.csv`: completed five-fold AtomSegNet translation-consistency test
-- `real_transfer_summary.csv`: unlabeled experimental transfer diagnostics
-- `strain_preliminary.csv`: preliminary strain quality metrics from four frames in fold 1
-
-The real-image metrics are diagnostics, not accuracy measurements, because the experimental set is unlabeled.
+The files here remain useful for provenance and for the earlier all-fold localization/translation analysis. Experimental-image outputs are unlabeled diagnostics, not atom-detection accuracy.
