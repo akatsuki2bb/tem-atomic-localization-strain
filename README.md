@@ -54,6 +54,51 @@ The defensible conclusions are narrow:
 
 See [`docs/model-comparison.md`](docs/model-comparison.md) for protocol details, paired N2V results, and the scope of the downstream tests.
 
+## Model architectures
+
+All four models produce a denoised image and an atomic-column segmentation map, but they route spatial information differently.
+
+| Model | Main architectural idea |
+|---|---|
+| AtomSegNet | Five-level residual U-Net with attention-gated skip connections |
+| U-Net++ (`UNetPP`) | Nested dense skip pathways with four learned deep-supervision branches |
+| HRNet | Three parallel spatial resolutions with repeated cross-resolution fusion |
+| SwinUNet | Hierarchical shifted-window transformer with patch merging and expansion |
+
+The figures below are explanatory schematics. The executable definitions and instantiated hyperparameters in the training notebooks remain the source of truth.
+
+<details>
+<summary><strong>AtomSegNet</strong> — residual attention U-Net</summary>
+
+![AtomSegNet architecture: residual U-Net with attention-gated skip connections and dual output heads](assets/architecture_atomsegnet.png)
+
+</details>
+
+<details>
+<summary><strong>U-Net++ / MT-UNet++</strong> — nested skip pathways and deep supervision</summary>
+
+![U-Net++ architecture: nested residual pathways, deep-supervision fusion, and dual output heads](assets/architecture_unetpp.png)
+
+`MT-UNet++` is the schematic label for the repository's dual-task `UNetPP` implementation.
+
+</details>
+
+<details>
+<summary><strong>HRNet</strong> — parallel multi-resolution feature fusion</summary>
+
+![HRNet architecture: three parallel resolutions with repeated feature exchange and dual output heads](assets/architecture_hrnet.png)
+
+</details>
+
+<details>
+<summary><strong>SwinUNet</strong> — hierarchical shifted-window transformer</summary>
+
+![SwinUNet architecture: shifted-window transformer encoder-decoder with dual output heads](assets/architecture_swinunet.png)
+
+Benchmark instantiation: patch size 4, window size 8, embedding width 56, depths `(2, 2, 2, 2)`, and attention heads `(2, 4, 8, 16)`. The schematic illustrates the same topology with a generic wider Swin profile.
+
+</details>
+
 ## From masks to measurements
 
 The analysis notebook converts probability maps into atomic-column centers and then fits local lattice geometry. The current downstream evidence is deliberately labelled as supporting analysis:
@@ -73,6 +118,7 @@ This separation is the core research contribution: a reconstruction can look con
 | [`notebooks/02_swinunet_training.ipynb`](notebooks/02_swinunet_training.ipynb) | SwinUNet training record and five-fold direct-training run |
 | [`notebooks/03_benchmark_and_physics.ipynb`](notebooks/03_benchmark_and_physics.ipynb) | Current four-model benchmark and downstream physics analyses |
 | [`tables/`](tables/) | Current committed benchmark tables and provenance records |
+| [`assets/`](assets/) | Model-comparison figure, examples, and architecture schematics |
 | [`results/`](results/) | Earlier, incomplete snapshot retained for traceability |
 | [`docs/methods.md`](docs/methods.md) | Evaluation definitions and interpretation rules |
 | [`docs/reproducibility.md`](docs/reproducibility.md) | Environment, data/checkpoint requirements, and rerun levels |
@@ -119,4 +165,3 @@ Full evaluation requires the external dataset and 35 trained checkpoints; they a
 - Experimental transfer has no ground-truth atom annotations.
 
 This is an **ongoing research codebase**, not a production microscopy package. The present repository supports a credible model-comparison and methods narrative; a publication-grade release still needs group-aware splits, full-fold evaluation, archived checkpoints/configuration, and deformation-ground-truth strain tests.
-
