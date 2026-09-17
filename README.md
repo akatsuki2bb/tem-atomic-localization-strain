@@ -120,6 +120,3 @@ Full evaluation requires the external dataset and 35 trained checkpoints; they a
 
 This is an **ongoing research codebase**, not a production microscopy package. The present repository supports a credible model-comparison and methods narrative; a publication-grade release still needs group-aware splits, full-fold evaluation, archived checkpoints/configuration, and deformation-ground-truth strain tests.
 
-## Application-ready summary
-
-> I developed a five-fold benchmark comparing AtomSegNet, U-Net++, HRNet, and SwinUNet on 14,364 simulated HAADF-TEM images, linking denoising and atomic-column segmentation to sub-pixel localization and exploratory lattice/strain analysis. The study shows that the best reconstruction model is not necessarily the best model for quantitative atomic measurements.
