@@ -1,8 +1,10 @@
-# Quantitative TEM with Deep Learning
+# Quantitative TEM with deep learning
 
-**A controlled benchmark of denoising, atomic-column segmentation, sub-pixel localization, and lattice/strain diagnostics in simulated HAADF-TEM.**
+Denoising, atomic-column segmentation, sub-pixel localization and lattice diagnostics on simulated HAADF-TEM, measured under one controlled protocol.
 
-This project asks a measurement question: **do cleaner-looking neural-network outputs also produce better atomic coordinates?** Four similarly sized models are compared, and their pixel-level outputs are propagated into coordinate and lattice analyses rather than judged by visual quality alone.
+Four dual-head networks of comparable size are trained on identical folds of TEM-ImageNet-v1.3 and compared at two levels: the pixel-level output, and the atomic coordinates that output produces. The second level is the reason the repository exists. A reconstruction can score well in PSNR and still give a worse atomic mask, so segmentation, denoising, centroid recovery, shift recovery and strain are reported as separate measurements.
+
+Status: active research codebase. The headline five-fold table is frozen at 14 September 2026 in [`tables/benchmark_summary.csv`](tables/benchmark_summary.csv). The [19 September run](runs/20260919-200658/) adds coordinate, runtime and stress-test output alongside it.
 
 ```mermaid
 flowchart TD
@@ -13,130 +15,126 @@ flowchart TD
     E --> F["Lattice and strain diagnostics"]
 ```
 
-> Headline benchmark: **14 September 2026**, from [`tables/benchmark_summary.csv`](tables/benchmark_summary.csv). A [19 September follow-up run](runs/20260919-200658/) adds supporting coordinate, runtime, and stress-test outputs; it does not replace the five-fold table.
+## Benchmark design
 
-## Study design
-
-| Item | Current scope |
+| Item | Specification |
 |---|---|
-| Data | 14,364 paired 256 × 256 simulated TEM frames from TEM-ImageNet-v1.3 |
-| Models | AtomSegNet, U-Net++, HRNet, and SwinUNet; approximately 9.1 M parameters each |
-| Validation | 5-fold image-level cross-validation, seed 42 |
-| Headline evaluation | Deterministic subset of 600 held-out images per fold; 3,000 evaluations per configuration |
-| Training conditions | Direct training for all four models; N2V warm start for the three CNN models |
-| Primary outputs | Denoised intensity and atomic-column probability map |
-| Downstream checks | Centroid recovery, controlled sub-pixel shifts, lattice fitting, and exploratory strain analysis |
+| Data | 14,364 paired 256 x 256 simulated TEM frames, TEM-ImageNet-v1.3 |
+| Models | AtomSegNet, U-Net++, HRNet, SwinUNet; about 9.1 M parameters each |
+| Validation | Image-level 5-fold cross-validation, seed 42 |
+| Headline evaluation | Deterministic 600-image subset per held-out fold, 3,000 evaluations per configuration |
+| Training conditions | Direct training for all four models; N2V warm start for the three CNNs |
+| Heads | Denoised intensity and atomic-column probability |
+| Segmentation metric | IoU at a fixed probability threshold of 0.5 |
+| Denoising metrics | PSNR and SSIM against the simulated clean frame, referenced to a Gaussian filter with sigma = 1 on the same noisy input |
+| Downstream checks | Centroid recovery, controlled sub-pixel shifts, lattice fitting, exploratory strain |
 
-## Main result
+## Segmentation and denoising
 
-The models do **not** have one universal ranking. AtomSegNet gives the strongest segmentation, while SwinUNet gives the only denoising result that clearly beats the Gaussian reference.
+There is no single winner. AtomSegNet segments best; SwinUNet is the only model whose denoising head beats the Gaussian reference.
 
 | Initialization | Model | IoU at 0.5 | PSNR (dB) | SSIM | PSNR vs Gaussian (dB) |
 |---|---|---:|---:|---:|---:|
-| Direct | AtomSegNet | **0.8763 ± 0.0026** | 24.68 ± 0.73 | 0.706 | -1.93 |
+| Direct | AtomSegNet | 0.8763 ± 0.0026 | 24.68 ± 0.73 | 0.706 | -1.93 |
 | Direct | HRNet | 0.8629 ± 0.0019 | 26.45 ± 0.34 | 0.801 | -0.16 |
 | Direct | U-Net++ | 0.8601 ± 0.0071 | 18.13 ± 8.14 | 0.615 | -8.48 |
-| Direct | SwinUNet | 0.8547 ± 0.0041 | **30.82 ± 0.35** | **0.917** | **+4.21** |
+| Direct | SwinUNet | 0.8547 ± 0.0041 | 30.82 ± 0.35 | 0.917 | +4.21 |
 | N2V warm start | AtomSegNet | 0.8616 ± 0.0018 | 20.98 ± 0.45 | 0.587 | -5.63 |
 | N2V warm start | HRNet | 0.8248 ± 0.0064 | 15.82 ± 0.78 | 0.445 | -10.79 |
 | N2V warm start | U-Net++ | 0.8604 ± 0.0101 | 15.17 ± 6.59 | 0.527 | -11.43 |
 
-Values are mean ± sample standard deviation across five folds. IoU uses a fixed probability threshold of 0.5. PSNR and SSIM compare the denoising head with the simulated clean image; the reference is a Gaussian filter with σ = 1 applied to the same noisy inputs.
+Values are mean ± sample standard deviation over five folds.
 
 ![Five-fold model comparison](assets/model_comparison.png)
 
-The defensible conclusions are narrow:
+Direct AtomSegNet leads on IoU by 0.0134 over HRNet, 0.0162 over U-Net++ and 0.0216 over SwinUNet, and its fold spread is the tightest in the table at ± 0.0026. Direct SwinUNet gains 4.21 dB on the Gaussian reference and reaches SSIM 0.917, while every CNN denoising head sits at or below that reference. U-Net++ has the widest PSNR spread of any configuration, 8.14 dB direct and 6.59 dB with N2V, so its denoising head is fold-dependent in a way the others are not.
 
-- **AtomSegNet, trained directly, is the best segmenter in this benchmark.** Its mean IoU is 0.0134 above direct HRNet, 0.0162 above direct U-Net++, and 0.0216 above direct SwinUNet.
-- **SwinUNet, trained directly, is the best denoiser.** It gains 4.21 dB over the Gaussian reference, while every CNN denoising head falls at or below that baseline.
-- **N2V is not a general improvement.** Paired across folds, it reduces IoU for AtomSegNet and HRNet and leaves U-Net++ effectively unchanged. SwinUNet has not been evaluated with N2V.
-- **Image fidelity is not coordinate quality.** The repository therefore keeps segmentation, denoising, centroid, shift-recovery, and strain diagnostics separate.
-
-See [`docs/model-comparison.md`](docs/model-comparison.md) for protocol details, paired N2V results, and the scope of the downstream tests.
+The N2V warm start does not transfer as a general gain. Mean IoU falls by 0.0147 for AtomSegNet and by 0.0381 for HRNet, and moves by 0.0003 for U-Net++. The cost on the denoising head is larger: 3.70 dB for AtomSegNet, 10.63 dB for HRNet and 2.96 dB for U-Net++. SwinUNet has direct folds only, so it is absent from the N2V half of the grid. Paired per-fold values and the protocol behind them are in [`docs/model-comparison.md`](docs/model-comparison.md).
 
 ## Model architectures
 
-All four models produce a denoised image and an atomic-column segmentation map, but they route spatial information differently.
+All four models emit a denoised image and an atomic-column map. They differ in how spatial information is routed.
 
-| Model | Main architectural idea |
+| Model | Architecture |
 |---|---|
 | AtomSegNet | Five-level residual U-Net with attention-gated skip connections |
 | U-Net++ (`UNetPP`) | Nested dense skip pathways with four learned deep-supervision branches |
 | HRNet | Three parallel spatial resolutions with repeated cross-resolution fusion |
 | SwinUNet | Hierarchical shifted-window transformer with patch merging and expansion |
 
-The figures below are explanatory schematics. The executable definitions and instantiated hyperparameters in the training notebooks remain the source of truth.
+The figures below are explanatory schematics. The executable definitions and instantiated hyperparameters in the training notebooks are the source of truth.
 
 <details>
-<summary><strong>AtomSegNet</strong> — residual attention U-Net</summary>
+<summary><strong>AtomSegNet</strong>, residual attention U-Net</summary>
 
 ![AtomSegNet architecture: residual U-Net with attention-gated skip connections and dual output heads](assets/architecture_atomsegnet.png)
 
 </details>
 
 <details>
-<summary><strong>U-Net++ / MT-UNet++</strong> — nested skip pathways and deep supervision</summary>
+<summary><strong>U-Net++ / MT-UNet++</strong>, nested skip pathways and deep supervision</summary>
 
 ![U-Net++ architecture: nested residual pathways, deep-supervision fusion, and dual output heads](assets/architecture_unetpp.png)
 
-`MT-UNet++` is the schematic label for the repository's dual-task `UNetPP` implementation.
+`MT-UNet++` is the schematic label for the dual-task `UNetPP` implementation in this repository.
 
 </details>
 
 <details>
-<summary><strong>HRNet</strong> — parallel multi-resolution feature fusion</summary>
+<summary><strong>HRNet</strong>, parallel multi-resolution feature fusion</summary>
 
 ![HRNet architecture: three parallel resolutions with repeated feature exchange and dual output heads](assets/architecture_hrnet.png)
 
 </details>
 
 <details>
-<summary><strong>SwinUNet</strong> — hierarchical shifted-window transformer</summary>
+<summary><strong>SwinUNet</strong>, hierarchical shifted-window transformer</summary>
 
 ![SwinUNet architecture: shifted-window transformer encoder-decoder with dual output heads](assets/architecture_swinunet.png)
 
-Benchmark instantiation: patch size 4, window size 8, embedding width 56, depths `(2, 2, 2, 2)`, and attention heads `(2, 4, 8, 16)`. The schematic illustrates the same topology with a generic wider Swin profile.
+Benchmark instantiation: patch size 4, window size 8, embedding width 56, depths `(2, 2, 2, 2)`, attention heads `(2, 4, 8, 16)`. The schematic draws the same topology at a generic wider Swin profile.
 
 </details>
 
 ## From masks to measurements
 
-The analysis notebook converts probability maps into atomic-column centers and then fits local lattice geometry. A [19 September follow-up](docs/2026-09-19-supplementary-results.md) preserves all supplied CSVs, nine figures, and three comparison panels. Selected findings illustrate why the downstream measurement needs its own evaluation:
+The analysis notebook turns probability maps into atomic-column centers and fits local lattice geometry from them. The 19 September run records this stage over four experiments, with all CSVs, nine figures and three comparison panels preserved in [`runs/20260919-200658/`](runs/20260919-200658/).
 
-| Follow-up check | Recorded observation | Scope |
+| Experiment | Result | Conditions |
 |---|---|---|
-| Atomic-center detection | Direct AtomSegNet F1 **0.9476**, matched-coordinate RMSE **1.322 px** | 40 recorded frames, fold 2 only, 3 px match radius |
-| Known fractional shifts | Direct AtomSegNet at dose 1000: median RMSE **0.273 px** from raw images versus **0.410 px** from its denoised images | Three selected frames, three noise repeats, eight shifts; descriptive row medians |
-| Runtime | Direct AtomSegNet **12.23 ms** versus direct SwinUNet **20.37 ms** median per image at batch size 1 | Fold 2, one RTX 3070 Ti Laptop GPU |
-| Synthetic perturbations | Recorded grid of **5,040** model/image/setting rows | 20 stems, four doses, three blur values, three tilt values, seven settings |
-
-The earlier controlled shift experiment remains in [`tables/`](tables/): it used one selected configuration and five noise repeats. The new experiment in [`runs/20260919-200658/`](runs/20260919-200658/) uses all seven settings and three repeats. Neither establishes a five-fold coordinate ranking. The strain maps are exploratory because imposed deformation truth and verified physical pixel calibration are absent. Experimental TEM frames have no ground-truth atom annotations.
+| Atomic-center detection | Direct AtomSegNet F1 0.9476, matched-coordinate RMSE 1.322 px | 40 recorded frames, fold 2, 3 px match radius |
+| Known fractional shifts | Direct AtomSegNet at dose 1000: median RMSE 0.273 px from raw images, 0.410 px from its own denoised images | 3 frames, 3 noise repeats, 8 shifts, row medians |
+| Runtime at batch size 1 | Direct AtomSegNet 12.23 ms, direct SwinUNet 20.37 ms, median per image | Fold 2, one RTX 3070 Ti Laptop GPU |
+| Synthetic perturbations | 5,040 recorded model/image/setting rows | 20 stems, 4 doses, 3 blur values, 3 tilt values, 7 settings |
 
 ![Controlled shift and localization diagnostics from the 19 September run](runs/20260919-200658/figures/subpixel_precision.png)
 
-This separation is the core research contribution: a reconstruction can look convincing or score well in PSNR while producing a worse atomic mask, and stable coordinates on selected frames do not by themselves establish strain accuracy.
+Two results are worth reading together. AtomSegNet localizes better from the raw frame than from its own denoised frame, 0.273 px against 0.410 px, which is the opposite of what the PSNR table would predict, and it does so while running at 60 percent of SwinUNet's inference time. The model with the best image fidelity in the benchmark is therefore not the model that gives the best coordinates from it. Strain maps in this run are exploratory: imposed-deformation truth and a verified physical pixel calibration are not yet part of the protocol, and experimental TEM frames carry no ground-truth atom annotations.
+
+The earlier controlled shift experiment stays in [`tables/`](tables/) for comparison. It used one configuration and five noise repeats; the 19 September experiment uses all seven settings and three repeats. Scope and interpretation for each are set out in [`docs/2026-09-19-supplementary-results.md`](docs/2026-09-19-supplementary-results.md).
 
 ## Repository map
 
 | Path | Role |
 |---|---|
-| [`notebooks/01_cnn_training_pipeline.ipynb`](notebooks/01_cnn_training_pipeline.ipynb) | AtomSegNet, U-Net++, and HRNet training/evaluation pipeline |
-| [`notebooks/02_swinunet_training.ipynb`](notebooks/02_swinunet_training.ipynb) | SwinUNet training record and five-fold direct-training run |
-| [`notebooks/03_benchmark_and_physics.ipynb`](notebooks/03_benchmark_and_physics.ipynb) | Current four-model benchmark and downstream physics analyses |
-| [`tables/`](tables/) | Current committed benchmark tables and provenance records |
-| [`runs/20260919-200658/`](runs/20260919-200658/) | Complete uploaded follow-up output, including nine figures and three comparison panels |
-| [`assets/`](assets/) | Model-comparison figure, examples, and architecture schematics |
-| [`results/`](results/) | Earlier, incomplete snapshot retained for traceability |
-| [`docs/methods.md`](docs/methods.md) | Evaluation definitions and interpretation rules |
-| [`docs/reproducibility.md`](docs/reproducibility.md) | Environment, data/checkpoint requirements, and rerun levels |
-| [`docs/2026-09-19-supplementary-results.md`](docs/2026-09-19-supplementary-results.md) | Scoped interpretation of the later coordinate and robustness results |
-| [`docs/portfolio-blurb.md`](docs/portfolio-blurb.md) | Short descriptions for CVs and PhD applications |
-| [`scripts/plot_model_comparison.py`](scripts/plot_model_comparison.py) | Regenerates the README comparison figure from the current CSV |
-| [`scripts/summarize_supplementary_run.py`](scripts/summarize_supplementary_run.py) | Checks row counts and summarizes committed follow-up CSVs |
+| [`notebooks/01_cnn_training_pipeline.ipynb`](notebooks/01_cnn_training_pipeline.ipynb) | AtomSegNet, U-Net++ and HRNet training and evaluation |
+| [`notebooks/02_swinunet_training.ipynb`](notebooks/02_swinunet_training.ipynb) | SwinUNet training record and five-fold direct run |
+| [`notebooks/03_benchmark_and_physics.ipynb`](notebooks/03_benchmark_and_physics.ipynb) | Four-model benchmark and downstream physics analyses |
+| [`tables/`](tables/) | Committed benchmark tables and provenance records |
+| [`runs/20260919-200658/`](runs/20260919-200658/) | Follow-up run output: CSVs, nine figures, three comparison panels |
+| [`assets/`](assets/) | Comparison figure, examples and architecture schematics |
+| [`results/`](results/) | Earlier snapshot, retained for traceability |
+| [`docs/methods.md`](docs/methods.md) | Metric definitions and interpretation rules |
+| [`docs/model-comparison.md`](docs/model-comparison.md) | Protocol detail and paired N2V results |
+| [`docs/reproducibility.md`](docs/reproducibility.md) | Environment, data and checkpoint layout, rerun levels |
+| [`docs/2026-09-19-supplementary-results.md`](docs/2026-09-19-supplementary-results.md) | Scoped reading of the coordinate and perturbation results |
+| [`docs/portfolio-blurb.md`](docs/portfolio-blurb.md) | Short descriptions for CVs and applications |
+| [`scripts/plot_model_comparison.py`](scripts/plot_model_comparison.py) | Regenerates the comparison figure from the current CSV |
+| [`scripts/summarize_supplementary_run.py`](scripts/summarize_supplementary_run.py) | Checks row counts and summarizes the committed follow-up CSVs |
 
 ## Quick start
 
-The committed tables and figure can be inspected without the dataset or model weights.
+The committed tables and figures can be inspected without the dataset or the model weights.
 
 ```bash
 git clone https://github.com/akatsuki2bb/tem-atomic-localization-strain.git
@@ -150,7 +148,9 @@ python scripts/plot_model_comparison.py
 python scripts/summarize_supplementary_run.py
 ```
 
-For dataset checks and notebook execution, set the paths first:
+## Running the full pipeline
+
+Set the paths, then check the dataset before opening the analysis notebook.
 
 ```bash
 export TEM_PROJECT_ROOT="$PWD"
@@ -162,17 +162,8 @@ python scripts/check_dataset.py
 jupyter lab notebooks/03_benchmark_and_physics.ipynb
 ```
 
-Full evaluation requires the external dataset and 35 trained checkpoints; they are not committed here. Exact requirements and the expected checkpoint layout are documented in [`docs/reproducibility.md`](docs/reproducibility.md).
+A full evaluation needs the TEM-ImageNet-v1.3 dataset and the 35 trained checkpoints, which are held outside the repository. The expected checkpoint layout, the environment and the three rerun levels are given in [`docs/reproducibility.md`](docs/reproducibility.md). Evaluation splits are reconstructed from the documented seed and basename order. The 19 September run is committed as output for inspection, and the weights behind it are external.
 
-## Limits that matter
+## Author
 
-- The headline table evaluates 600 images per fold rather than each complete validation fold.
-- Folds are image-level KFold splits. Related simulation-family frames may therefore occur on both sides of a split.
-- The evaluation split is reconstructed from the documented seed and basename order; the CNN checkpoints do not embed enough metadata to verify it mechanically.
-- N2V pretraining saw noisy images that later appeared in validation folds, although it did not see their labels.
-- Checkpoints, the full dataset, and experimental images are external to this repository.
-- The downstream localization and strain experiments are smaller than the segmentation benchmark and should not be read as a calibrated strain-validation study.
-- The 19 September run includes output CSVs and plots, but not the weights or complete code used to generate every supplementary output; the repository supports CSV inspection, not an end-to-end rerun of that run.
-- Experimental transfer has no ground-truth atom annotations.
-
-This is an **ongoing research codebase**, not a production microscopy package. The present repository supports a credible model-comparison and methods narrative; a publication-grade release still needs group-aware splits, full-fold evaluation, archived checkpoints/configuration, and deformation-ground-truth strain tests.
+Utkarsh Upadhyay, IIT Jodhpur. Code and issues at [github.com/akatsuki2bb](https://github.com/akatsuki2bb).
