@@ -13,7 +13,7 @@ flowchart TD
     E --> F["Lattice and strain diagnostics"]
 ```
 
-> Latest benchmark snapshot: **14 September 2026**. Headline values come from [`tables/benchmark_summary.csv`](tables/benchmark_summary.csv), not the earlier files under `results/`.
+> Headline benchmark: **14 September 2026**, from [`tables/benchmark_summary.csv`](tables/benchmark_summary.csv). A [19 September follow-up run](runs/20260919-200658/) adds supporting coordinate, runtime, and stress-test outputs; it does not replace the five-fold table.
 
 ## Study design
 
@@ -101,12 +101,18 @@ Benchmark instantiation: patch size 4, window size 8, embedding width 56, depths
 
 ## From masks to measurements
 
-The analysis notebook converts probability maps into atomic-column centers and then fits local lattice geometry. The current downstream evidence is deliberately labelled as supporting analysis:
+The analysis notebook converts probability maps into atomic-column centers and then fits local lattice geometry. A [19 September follow-up](docs/2026-09-19-supplementary-results.md) preserves all supplied CSVs, nine figures, and three comparison panels. Selected findings illustrate why the downstream measurement needs its own evaluation:
 
-- the controlled shift experiment uses three frames, three simulated dose levels, five noise realizations, and eight sub-pixel shifts;
-- the lattice/strain batch uses 60 dense frames per configuration from one selected fold;
-- physical pixel calibration is not verified, so spatial claims should remain in **pixels**;
-- experimental TEM frames are unlabeled, so transfer outputs are qualitative diagnostics rather than accuracy measurements.
+| Follow-up check | Recorded observation | Scope |
+|---|---|---|
+| Atomic-center detection | Direct AtomSegNet F1 **0.9476**, matched-coordinate RMSE **1.322 px** | 40 recorded frames, fold 2 only, 3 px match radius |
+| Known fractional shifts | Direct AtomSegNet at dose 1000: median RMSE **0.273 px** from raw images versus **0.410 px** from its denoised images | Three selected frames, three noise repeats, eight shifts; descriptive row medians |
+| Runtime | Direct AtomSegNet **12.23 ms** versus direct SwinUNet **20.37 ms** median per image at batch size 1 | Fold 2, one RTX 3070 Ti Laptop GPU |
+| Synthetic perturbations | Recorded grid of **5,040** model/image/setting rows | 20 stems, four doses, three blur values, three tilt values, seven settings |
+
+The earlier controlled shift experiment remains in [`tables/`](tables/): it used one selected configuration and five noise repeats. The new experiment in [`runs/20260919-200658/`](runs/20260919-200658/) uses all seven settings and three repeats. Neither establishes a five-fold coordinate ranking. The strain maps are exploratory because imposed deformation truth and verified physical pixel calibration are absent. Experimental TEM frames have no ground-truth atom annotations.
+
+![Controlled shift and localization diagnostics from the 19 September run](runs/20260919-200658/figures/subpixel_precision.png)
 
 This separation is the core research contribution: a reconstruction can look convincing or score well in PSNR while producing a worse atomic mask, and stable coordinates on selected frames do not by themselves establish strain accuracy.
 
@@ -118,12 +124,15 @@ This separation is the core research contribution: a reconstruction can look con
 | [`notebooks/02_swinunet_training.ipynb`](notebooks/02_swinunet_training.ipynb) | SwinUNet training record and five-fold direct-training run |
 | [`notebooks/03_benchmark_and_physics.ipynb`](notebooks/03_benchmark_and_physics.ipynb) | Current four-model benchmark and downstream physics analyses |
 | [`tables/`](tables/) | Current committed benchmark tables and provenance records |
+| [`runs/20260919-200658/`](runs/20260919-200658/) | Complete uploaded follow-up output, including nine figures and three comparison panels |
 | [`assets/`](assets/) | Model-comparison figure, examples, and architecture schematics |
 | [`results/`](results/) | Earlier, incomplete snapshot retained for traceability |
 | [`docs/methods.md`](docs/methods.md) | Evaluation definitions and interpretation rules |
 | [`docs/reproducibility.md`](docs/reproducibility.md) | Environment, data/checkpoint requirements, and rerun levels |
+| [`docs/2026-09-19-supplementary-results.md`](docs/2026-09-19-supplementary-results.md) | Scoped interpretation of the later coordinate and robustness results |
 | [`docs/portfolio-blurb.md`](docs/portfolio-blurb.md) | Short descriptions for CVs and PhD applications |
 | [`scripts/plot_model_comparison.py`](scripts/plot_model_comparison.py) | Regenerates the README comparison figure from the current CSV |
+| [`scripts/summarize_supplementary_run.py`](scripts/summarize_supplementary_run.py) | Checks row counts and summarizes committed follow-up CSVs |
 
 ## Quick start
 
@@ -138,6 +147,7 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
 python scripts/plot_model_comparison.py
+python scripts/summarize_supplementary_run.py
 ```
 
 For dataset checks and notebook execution, set the paths first:
@@ -162,6 +172,7 @@ Full evaluation requires the external dataset and 35 trained checkpoints; they a
 - N2V pretraining saw noisy images that later appeared in validation folds, although it did not see their labels.
 - Checkpoints, the full dataset, and experimental images are external to this repository.
 - The downstream localization and strain experiments are smaller than the segmentation benchmark and should not be read as a calibrated strain-validation study.
+- The 19 September run includes output CSVs and plots, but not the weights or complete code used to generate every supplementary output; the repository supports CSV inspection, not an end-to-end rerun of that run.
 - Experimental transfer has no ground-truth atom annotations.
 
 This is an **ongoing research codebase**, not a production microscopy package. The present repository supports a credible model-comparison and methods narrative; a publication-grade release still needs group-aware splits, full-fold evaluation, archived checkpoints/configuration, and deformation-ground-truth strain tests.

@@ -52,6 +52,8 @@ These analyses demonstrate the measurement pipeline but are not used to establis
 
 Some committed tables contain angstrom or picometre columns calculated with a historical placeholder scale. Those columns are not physically validated and should not be quoted; use the corresponding pixel-unit columns.
 
+The [19 September supplementary run](2026-09-19-supplementary-results.md) adds a **separate** seven-setting shift experiment (three repeats per frame/dose/shift), a 40-frame fold-2 localization table, device-specific efficiency numbers, a synthetic perturbation grid, and diagnostics. It does not update this page's five-fold headline statistics; the earlier `tables/subpixel_precision.csv` above uses five repeats and one selected configuration.
+
 ## Bottom line
 
 The strongest research-facing result is not “model X wins.” It is the demonstrated separation between image restoration and quantitative microscopy: direct SwinUNet gives the best intensity reconstruction, direct AtomSegNet gives the best segmentation, and the downstream coordinate tests require their own validation.

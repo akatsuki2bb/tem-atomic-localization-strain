@@ -1,0 +1,25 @@
+# Supplementary measurement run: 19 September 2026
+
+This directory is a verbatim copy of the **25 output files** supplied from `D:\REsults\benchmark_v3\runs\20260919-200658`, plus this index. It is a follow-up to the [14 September five-fold benchmark](../../tables/README.md), which remains the source of the headline architecture comparison. No checkpoint files or source dataset were in the supplied run.
+
+## What is here
+
+| Output | Coverage | Use |
+|---|---|---|
+| [`tables/localization_accuracy.csv`](tables/localization_accuracy.csv) | Seven settings; fold 2; 40 recorded frames per setting | Detection precision/recall/F1 and matched-coordinate RMSE, with a 3 px match radius recorded in the manifest. Selected-fold check, not five-fold localization accuracy. |
+| [`tables/subpixel_precision.csv`](tables/subpixel_precision.csv), [`tables/detector_floor.csv`](tables/detector_floor.csv) | Three frames × three dose settings × three repeats × eight shifts × seven model settings × two image sources = 3,024 rows; 24 floor rows | Known-shift localization diagnostics. This is a **different experiment** from [`../../tables/subpixel_precision.csv`](../../tables/subpixel_precision.csv), which has five repeats and one selected configuration. Rows sharing an image/shift are not independent replicates. |
+| [`tables/robustness.csv`](tables/robustness.csv) | 20 image stems × four dose settings × three blur values × three tilt values × seven settings = 5,040 rows | Internal synthetic perturbation study. The precise perturbation procedure and units are not supplied here. |
+| [`tables/efficiency.csv`](tables/efficiency.csv) | Seven settings, fold 2, RTX 3070 Ti Laptop GPU, batch sizes 1/4/8 | Device-specific latency, throughput, VRAM and estimated GMACs. The `train_s` column is empty. |
+| [`tables/training_curves_summary.csv`](tables/training_curves_summary.csv) | Direct SwinUNet; five folds; final/best F1 and PSNR for 60 epochs | Endpoint summary; per-epoch logs used for the curve figure are absent. |
+| [`tables/paired_differences.csv`](tables/paired_differences.csv) | 21 recorded paired contrasts, five folds each | Exploratory fold comparisons; do not interpret unadjusted p-values as independent population tests. |
+| [`tables/panel_per_frame.csv`](tables/panel_per_frame.csv), [`tables/localization_report.csv`](tables/localization_report.csv) | Three demonstration frames × seven settings = 21 rows in each | Image panels, overlap and lattice/offset checks on selected examples. |
+| [`tables/strain_reference_space.csv`](tables/strain_reference_space.csv) | Final 27 rows | Diagnostic local strain values; no deformation ground truth, verified physical calibration, or setting identifier accompanies this table. |
+| [`tables/checkpoint_inventory.csv`](tables/checkpoint_inventory.csv) | Paths/metadata for 35 checkpoints | Historical inventory only: the weights are not included. |
+
+All [nine figures](figures/) and [three comparison panels](panels/) from the upload are retained. The most useful entry points are the [per-frame panel](panels/panel_00257.png), [localization/shift plots](figures/subpixel_precision.png), [synthetic robustness plot](figures/robustness.png), and [strain diagnostic](figures/strain_robust.png). The other files are [IoU/F1 summary](figures/iou_f1_summary.png), [raw-source jitter versus dose](figures/jitter_vs_dose_raw.png), [localization offsets](figures/localization_offsets.png), [paired differences](figures/paired_differences.png), [strain map](figures/strain_map.png), and [SwinUNet training curves](figures/training_curves_best_f1.png). Panels [00253](panels/panel_00253.png) and [00260](panels/panel_00260.png) show additional examples.
+
+## Recorded protocol and interpretation
+
+[`manifest.json`](manifest.json) records five folds, seed 42, a 0.5 mask threshold, up to 600 evaluation images per fold, Gaussian σ = 1, and an **unverified** `PIXEL_SIZE_A` value of 0.1229. The evaluation machine is listed as Windows 11, Python 3.14.2, PyTorch 2.11.0+cu128, NumPy 2.5.1 and an NVIDIA RTX 3070 Ti Laptop GPU. Treat coordinate errors in **pixels**, not calibrated physical units. The manifest's `updated` field repeats the start time; [`logs/events.jsonl`](logs/events.jsonl) records later output writes through 22:06:45. In particular, the strain table was overwritten during this run: the final file has **27 rows**, after two logged 65-row versions that are not present.
+
+The archive contains neither the trained weights nor the full generation code for these supplementary outputs. The manifest references notebook paths on the original Windows machines. The notebooks currently in this repository document the main benchmark and related analysis methods, but do **not** recreate all nine figures and supplementary tables in this run. With only this repository, you can inspect and independently summarize the committed CSVs using [`../../scripts/summarize_supplementary_run.py`](../../scripts/summarize_supplementary_run.py); you cannot claim an end-to-end rerun of this September 19 output. See [reproducibility notes](../../docs/reproducibility.md).
