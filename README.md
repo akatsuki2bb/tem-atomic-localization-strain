@@ -39,7 +39,7 @@ Direct AtomSegNet led on IoU in every fold, by 0.0134 over HRNet (5/5 folds, 95 
 
 Denoising separates the models much further than segmentation does. Direct SwinUNet gained 4.21 dB on the Gaussian reference and reached SSIM 0.917, and its five folds agreed to within 0.35 dB. Every CNN denoising head sat at or below the Gaussian reference, so we do not present those heads as denoisers on this snapshot. U-Net++ was the least stable configuration in the table, with a fold spread of 8.14 dB direct and 6.59 dB after the warm start.
 
-![Segmentation example on a held-out frame](assets/segmentation_example.png)
+![Segmentation example on a held-out frame](per-model qualitative strips and efficiency table/strip_AtomSegNet_no_n2v_f2_00289.png)
 
 ## Noise2Void warm start
 
