@@ -20,7 +20,8 @@ checkpoints/*
 
 # Generated runs
 results_local/
-runs/
+runs/*
+!runs/20260919-200658/
 without n2v/
 with n2v/
 *.log

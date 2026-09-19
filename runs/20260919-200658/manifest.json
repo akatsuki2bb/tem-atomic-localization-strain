@@ -1,0 +1,59 @@
+{
+  "run_id": "20260919-200658",
+  "started": "2026-09-19T20:06:58",
+  "updated": "2026-09-19T20:06:58",
+  "config": {
+    "RESULTS_ROOT": "D:\\REsults",
+    "DATA_ROOT": "D:\\UNet\\TEM-ImageNet-v1.3-master_2\\TEM-ImageNet-v1.3-master",
+    "REAL_ROOT": "D:\\idm downloads\\archive",
+    "OUT_ROOT": "D:\\REsults\\benchmark_v3",
+    "NOTEBOOK_SOURCES": [
+      "E:\\TEM IMAGE SEGMENTATION-Copy1.ipynb",
+      "C:\\Users\\akatsuki\\Downloads\\SWUN NET.ipynb"
+    ],
+    "ARCHS": [
+      "AtomSegNet",
+      "UNetPP",
+      "HRNet",
+      "SwinUNet"
+    ],
+    "CONDITIONS": [
+      "no_n2v",
+      "with_n2v"
+    ],
+    "N_FOLDS": 5,
+    "SEED": 42,
+    "IMG_DIR": "image",
+    "MASK_DIR": "circularMask",
+    "GT_POS": "gaussianMask",
+    "CLEAN_DIR": "noNoise",
+    "EXT": [
+      ".png",
+      ".tif",
+      ".tiff",
+      ".jpg",
+      ".jpeg",
+      ".npy"
+    ],
+    "THRESHOLD": 0.5,
+    "EVAL_BATCH": 4,
+    "EVAL_MAX_IMG": 600,
+    "NUM_WORKERS": 0,
+    "GAUSS_SIGMA": 1.0,
+    "PIXEL_SIZE_A": 0.1229,
+    "PIXEL_SIZE_VERIFIED": false,
+    "MATCH_RADIUS_PX": 3.0,
+    "RUN_TAG": "",
+    "RUN_ID": "20260919-200658",
+    "RUN_DIR": "D:\\REsults\\benchmark_v3\\runs\\20260919-200658"
+  },
+  "device": "cuda",
+  "gpu": "NVIDIA GeForce RTX 3070 Ti Laptop GPU",
+  "versions": {
+    "python": "3.14.2",
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.1",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "note": "started"
+}

@@ -32,6 +32,16 @@ python scripts/plot_model_comparison.py
 
 The script validates the seven expected architecture-condition rows and writes `assets/model_comparison.png`.
 
+### Inspect the later supplementary archive
+
+The supplied [19 September run](../runs/20260919-200658/) is preserved in full: `manifest.json`, `logs/events.jsonl`, 11 CSV tables, nine figures, and three image panels. To verify table row counts and recalculate selected CSV-based numbers without weights or a GPU:
+
+```bash
+python scripts/summarize_supplementary_run.py
+```
+
+The [run index](../runs/20260919-200658/README.md) lists the exact coverage of each table. The script reads archived CSVs; it does not redo inference, bootstrap intervals, training, or figure generation. The manifest records Windows 11, Python 3.14.2, PyTorch 2.11.0+cu128, NumPy 2.5.1 and an RTX 3070 Ti Laptop GPU for this follow-up. Its `updated` timestamp is stale relative to the event log, which records writes through 22:06:45. `strain_reference_space.csv` was overwritten and only its final 27-row version survives.
+
 ## Level 2: validate the dataset layout
 
 Download TEM-ImageNet-v1.3 separately, then expose its root:
@@ -93,3 +103,4 @@ The notebooks preserve the experimental record, but training is not yet packaged
 6. Minimum package versions are provided, but no frozen lockfile or container image is committed.
 7. Model weights and experimental images are not distributed in this repository.
 8. The physical pixel calibration is unverified; use pixel-unit outputs unless an external calibration is supplied.
+9. The 19 September archive contains no weight files, underlying simulation frames, raw per-epoch curves, or complete source code for all new supplementary procedures. The manifest points to local notebooks that are not included in the archive; the repository notebooks document related methods but cannot reproduce every new CSV and figure as supplied. Its fold-2 localization and efficiency results should not be generalized to five folds or other hardware.

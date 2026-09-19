@@ -42,11 +42,15 @@ Local maxima are refined to sub-pixel centers and matched to peaks extracted fro
 
 ### 4. Controlled shift recovery
 
-Known fractional-pixel translations are applied before inference. After compensating for the imposed translation, residual bias, robust coordinate jitter, RMSE, and match fraction are measured. The current test uses three frames, three dose levels, five independent Poisson-noise realizations, eight shifts, and one selected checkpoint per configuration.
+Known fractional-pixel translations are applied before inference. After compensating for the imposed translation, residual bias, robust coordinate jitter, RMSE, and match fraction are measured. The earlier committed test uses three frames, three dose levels, five independent Poisson-noise realizations, eight shifts, and one selected configuration.
+
+The archived [19 September follow-up](../runs/20260919-200658/) has a distinct shift table: three frames, three dose settings, **three** repeats, eight shifts, seven model settings, and `raw`/`denoised` coordinate sources. Do not combine its rows with the earlier five-repeat table. Within each run, repeated rows from the same frame/settings are correlated.
 
 ### 5. Lattice and strain diagnostics
 
 Detected centers are fitted to a reference lattice. Residual displacement is propagated to local estimates of `exx`, `eyy`, `exy`, and rotation. The current batch contains 60 dense frames per configuration from one selected fold. Because the physical pixel scale is not verified and no imposed strain ground truth is used, this stage demonstrates pipeline operation rather than calibrated strain accuracy.
+
+The follow-up's final `strain_reference_space.csv` contains 27 local records after overwrites noted in its event log. Its figures are exploratory and do not add ground-truth deformation validation.
 
 ### 6. Experimental transfer
 

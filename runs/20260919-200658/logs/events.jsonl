@@ -1,0 +1,30 @@
+{"t": "2026-09-19T20:06:58", "event": "run_start", "cwd": "D:\\Notebook"}
+{"t": "2026-09-19T20:09:10", "event": "table", "name": "checkpoint_inventory.csv", "rows": 35, "cols": ["path", "arch", "condition", "fold", "size_mb", "mtime", "from_tag"]}
+{"t": "2026-09-19T20:09:14", "event": "figure", "name": "iou_f1_summary.png", "kind": "figures"}
+{"t": "2026-09-19T20:09:15", "event": "table", "name": "training_curves_summary.csv", "rows": 10, "cols": ["arch", "condition", "fold", "metric", "epochs", "final", "best", "best_epoch"]}
+{"t": "2026-09-19T20:09:16", "event": "figure", "name": "training_curves_best_f1.png", "kind": "figures"}
+{"t": "2026-09-19T20:11:26", "event": "table", "name": "efficiency.csv", "rows": 7, "cols": ["condition", "arch", "fold", "params_M", "tensors", "GMACs", "iou", "psnr", "ms_median_b1", "ms_p90_b1", "img_per_s_b1", "vram_mb_b1"]}
+{"t": "2026-09-19T20:18:59", "event": "figure", "name": "panel_00253.png", "kind": "panels"}
+{"t": "2026-09-19T20:19:05", "event": "figure", "name": "panel_00257.png", "kind": "panels"}
+{"t": "2026-09-19T20:19:11", "event": "figure", "name": "panel_00260.png", "kind": "panels"}
+{"t": "2026-09-19T20:19:13", "event": "table", "name": "panel_per_frame.csv", "rows": 21, "cols": ["stem", "condition", "arch", "iou", "dice", "psnr", "fp_pct", "fn_pct", "coverage", "blob"]}
+{"t": "2026-09-19T20:20:10", "event": "table", "name": "localization_report.csv", "rows": 21, "cols": ["condition", "arch", "fold", "stem", "n_pred", "n_true", "n_regions", "d_px", "d_true", "spacing_err_pct", "off_dx", "off_dy"]}
+{"t": "2026-09-19T20:20:13", "event": "figure", "name": "localization_offsets.png", "kind": "figures"}
+{"t": "2026-09-19T21:35:52", "event": "table", "name": "subpixel_precision.csv", "rows": 3024, "cols": ["n", "bias_x", "bias_y", "bias_mag", "jitter_x", "jitter_y", "rmse", "stem", "dose", "rep", "shift", "source"]}
+{"t": "2026-09-19T21:35:54", "event": "figure", "name": "subpixel_precision.png", "kind": "figures"}
+{"t": "2026-09-19T21:35:54", "event": "table", "name": "detector_floor.csv", "rows": 24, "cols": ["n", "bias_x", "bias_y", "bias_mag", "jitter_x", "jitter_y", "rmse", "stem", "shift", "matched_frac", "spurious_frac"]}
+{"t": "2026-09-19T21:35:57", "event": "figure", "name": "strain_map.png", "kind": "figures"}
+{"t": "2026-09-19T21:35:58", "event": "figure", "name": "strain_robust.png", "kind": "figures"}
+{"t": "2026-09-19T21:35:59", "event": "table", "name": "strain_reference_space.csv", "rows": 65, "cols": ["exx", "eyy", "exy", "rot", "x", "y"]}
+{"t": "2026-09-19T21:59:00", "event": "figure", "name": "strain_map.png", "kind": "figures"}
+{"t": "2026-09-19T21:59:02", "event": "figure", "name": "strain_robust.png", "kind": "figures"}
+{"t": "2026-09-19T21:59:02", "event": "table", "name": "strain_reference_space.csv", "rows": 65, "cols": ["exx", "eyy", "exy", "rot", "x", "y"]}
+{"t": "2026-09-19T21:59:03", "event": "figure", "name": "strain_robust.png", "kind": "figures"}
+{"t": "2026-09-19T21:59:04", "event": "table", "name": "strain_reference_space.csv", "rows": 27, "cols": ["exx", "eyy", "exy", "rot", "x", "y"]}
+{"t": "2026-09-19T22:00:54", "event": "table", "name": "efficiency.csv", "rows": 7, "cols": ["condition", "arch", "fold", "params_M", "tensors", "GMACs", "iou", "psnr", "ms_median_b1", "ms_p90_b1", "img_per_s_b1", "vram_mb_b1"]}
+{"t": "2026-09-19T22:03:33", "event": "table", "name": "localization_accuracy.csv", "rows": 7, "cols": ["n_frames", "n_matched", "precision", "recall", "f1", "bias_x", "bias_y", "bias_mag", "scatter_x", "scatter_y", "rmse_px", "condition"]}
+{"t": "2026-09-19T22:06:41", "event": "figure", "name": "robustness.png", "kind": "figures"}
+{"t": "2026-09-19T22:06:41", "event": "table", "name": "robustness.csv", "rows": 5040, "cols": ["stem", "dose", "blur", "tilt", "iou", "condition", "arch", "model"]}
+{"t": "2026-09-19T22:06:43", "event": "figure", "name": "paired_differences.png", "kind": "figures"}
+{"t": "2026-09-19T22:06:43", "event": "table", "name": "paired_differences.csv", "rows": 21, "cols": ["metric", "a", "b", "n", "mean", "sd", "ci_lo", "ci_hi", "wins", "p", "cohen_d", "condition"]}
+{"t": "2026-09-19T22:06:45", "event": "figure", "name": "jitter_vs_dose_raw.png", "kind": "figures"}
