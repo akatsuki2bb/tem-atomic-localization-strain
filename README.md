@@ -38,8 +38,10 @@ Values are means over five folds with the sample standard deviation.
 Direct AtomSegNet led on IoU in every fold, by 0.0134 over HRNet (5/5 folds, 95 percent CI 0.0123 to 0.0145), 0.0162 over U-Net++ (5/5, CI 0.0126 to 0.0209) and 0.0216 over SwinUNet (5/5, CI 0.0182 to 0.0250). The four direct models span only 0.0216 in IoU, so the architectural effect on segmentation is small compared with the effect of the noise itself: with the clean frame supplied as input on fold 2, AtomSegNet rose from 0.8537 to 0.9013, and removing the simulated background as well took it to 0.9190 ([`tables/input_ablation.csv`](tables/input_ablation.csv)).
 
 Denoising separates the models much further than segmentation does. Direct SwinUNet gained 4.21 dB on the Gaussian reference and reached SSIM 0.917, and its five folds agreed to within 0.35 dB. Every CNN denoising head sat at or below the Gaussian reference, so we do not present those heads as denoisers on this snapshot. U-Net++ was the least stable configuration in the table, with a fold spread of 8.14 dB direct and 6.59 dB after the warm start.
+## Per-model qualitative strips and efficiency table
 
-![Segmentation example on a held-out frame](per-model qualitative strips and efficiency table/strip_AtomSegNet_no_n2v_f2_00289.png)
+![AtomSegNet qualitative strip](efficiency_table/strip_AtomSegNet_no_n2v_f2_00289.png)
+
 
 ## Noise2Void warm start
 
