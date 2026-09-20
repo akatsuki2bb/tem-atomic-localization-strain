@@ -4,7 +4,7 @@ Denoising, atomic-column segmentation, sub-pixel localization and lattice diagno
 
 We compare four dual-head networks of matched size, about 9.1 M parameters each, on 14,364 paired 256 x 256 frames from TEM-ImageNet-v1.3. The models take a noisy simulated frame and return a denoised image and an atomic-column probability map. The question is whether a model that reconstructs the image better also measures the lattice better. It does not: on five folds, direct SwinUNet gave the only denoising result above the Gaussian reference, at 30.82 dB, while direct AtomSegNet gave the highest segmentation IoU, 0.8763. Image fidelity and coordinate quality are therefore reported as separate measurements throughout this repository, and no single score is formed from them.
 
-The headline comparison was frozen on 14 September 2026 in [`tables/benchmark_summary.csv`](tables/benchmark_summary.csv). A later run of 19 September 2026, archived complete in [`runs/20260919-200658/`](runs/20260919-200658/), adds coordinate accuracy, controlled shifts, a perturbation grid and device timings on one selected fold.
+The headline comparison is in [`tables/benchmark_summary.csv`](tables/benchmark_summary.csv). A later run, archived complete in [`runs/20260919-200658/`](runs/20260919-200658/), adds coordinate accuracy, controlled shifts, a perturbation grid and device timings on one selected fold.
 
 ```mermaid
 flowchart TD
@@ -38,10 +38,29 @@ Values are means over five folds with the sample standard deviation.
 Direct AtomSegNet led on IoU in every fold, by 0.0134 over HRNet (5/5 folds, 95 percent CI 0.0123 to 0.0145), 0.0162 over U-Net++ (5/5, CI 0.0126 to 0.0209) and 0.0216 over SwinUNet (5/5, CI 0.0182 to 0.0250). The four direct models span only 0.0216 in IoU, so the architectural effect on segmentation is small compared with the effect of the noise itself: with the clean frame supplied as input on fold 2, AtomSegNet rose from 0.8537 to 0.9013, and removing the simulated background as well took it to 0.9190 ([`tables/input_ablation.csv`](tables/input_ablation.csv)).
 
 Denoising separates the models much further than segmentation does. Direct SwinUNet gained 4.21 dB on the Gaussian reference and reached SSIM 0.917, and its five folds agreed to within 0.35 dB. Every CNN denoising head sat at or below the Gaussian reference, so we do not present those heads as denoisers on this snapshot. U-Net++ was the least stable configuration in the table, with a fold spread of 8.14 dB direct and 6.59 dB after the warm start.
-## Per-model qualitative strips and efficiency table
 
-![AtomSegNet qualitative strip](efficiency_table/strip_AtomSegNet_no_n2v_f2_00289.png)
+The pattern is visible frame by frame. Each strip below shows one held-out frame from that model's own best fold: the noisy input, the clean target, the model's reconstruction, the reference mask, the predicted probability, and an error overlay in which green is correct, red is vacuum painted as atom and yellow is an atom left unpainted.
 
+![AtomSegNet, best fold](assets/strips/strip_AtomSegNet_no_n2v_f2_00289.png)
+
+<details>
+<summary>The same strip for the other six configurations</summary>
+
+Each model is shown on a different frame, so the per-frame IoU values are not comparable across strips; the five-fold means above are what rank the models.
+
+**Direct**
+
+![U-Net++](assets/strips/strip_UNetPP_no_n2v_f2.png)
+![HRNet](assets/strips/strip_HRNet_no_n2v_f2.png)
+![SwinUNet](assets/strips/strip_SwinUNet_no_n2v_f4.png)
+
+**Noise2Void warm start**
+
+![AtomSegNet](assets/strips/strip_AtomSegNet_with_n2v_f2.png)
+![U-Net++](assets/strips/strip_UNetPP_with_n2v_f2.png)
+![HRNet](assets/strips/strip_HRNet_with_n2v_f2.png)
+
+</details>
 
 ## Noise2Void warm start
 
@@ -139,13 +158,14 @@ Detected centers are fitted to a reference lattice, and the residual displacemen
 | [`notebooks/02_swinunet_training.ipynb`](notebooks/02_swinunet_training.ipynb) | SwinUNet training record, five direct folds |
 | [`notebooks/03_benchmark_and_physics.ipynb`](notebooks/03_benchmark_and_physics.ipynb) | Four-model benchmark and the downstream physics analyses |
 | [`tables/`](tables/) | Benchmark summary, centroid metrics, input ablation, detector floor, checkpoint inventory and per-checkpoint key lists |
-| [`runs/20260919-200658/`](runs/20260919-200658/) | The 19 September run as supplied: 11 tables, nine figures, three panels, manifest and event log |
+| [`runs/20260919-200658/`](runs/20260919-200658/) | One archived run in full: 11 tables, nine figures, three panels, manifest and event log |
 | [`assets/`](assets/) | Comparison figure, architecture schematics, segmentation, strain and transfer examples |
+| [`assets/strips/`](assets/strips/) | Per-model qualitative strips, one held-out frame per configuration |
 | [`results/`](results/) | Earlier per-fold localization, precision, strain and transfer output |
 | [`docs/methods.md`](docs/methods.md) | Metric definitions and the rule against collapsing them |
 | [`docs/model-comparison.md`](docs/model-comparison.md) | Paired fold statistics and the scope of each supporting table |
 | [`docs/reproducibility.md`](docs/reproducibility.md) | Environment, checkpoint layout and the three rerun levels |
-| [`docs/2026-09-19-supplementary-results.md`](docs/2026-09-19-supplementary-results.md) | Reading of the coordinate, perturbation and timing results |
+| [`docs/supplementary-results.md`](docs/supplementary-results.md) | Reading of the coordinate, perturbation and timing results |
 | [`docs/portfolio-blurb.md`](docs/portfolio-blurb.md) | Short descriptions for applications |
 | [`scripts/`](scripts/) | `check_dataset.py`, `plot_model_comparison.py` and `summarize_supplementary_run.py` |
 
