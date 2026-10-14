@@ -41,7 +41,7 @@ Denoising separates the models much further than segmentation does. Direct SwinU
 
 The pattern is visible frame by frame. Each strip below shows one held-out frame from that model's own best fold: the noisy input, the clean target, the model's reconstruction, the reference mask, the predicted probability, and an error overlay in which green is correct, red is vacuum painted as atom and yellow is an atom left unpainted.
 
-![AtomSegNet, best fold](assets/strips/strip_AtomSegNet_no_n2v_f2_00289.png)
+![AtomSegNet, best fold](per-model qualitative strips and efficiency table/strip_AtomSegNet_no_n2v_f2_00289.png)
 
 <details>
 <summary>The same strip for the other six configurations</summary>
