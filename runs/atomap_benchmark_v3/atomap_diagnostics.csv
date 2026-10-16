@@ -1,0 +1,301 @@
+method,stem,split,cache_hit,seconds_this_call,status,initial,com_fallback,gaussian_fallback,gaussian_calls_accepted,invalid_final,errors,spacing_source,image_spacing_px,peak_separation_px,peak_finding_smoothing_px
+Atomap / noisy input,00296,eval,False,8.610175499999968,ok,381,0,1,380,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,01375,eval,False,6.5902780000005805,ok,358,0,0,358,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,01643,eval,False,15.36933769999996,ok,343,0,0,343,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,03521,eval,False,2.468399999999747,ok,86,1,3,83,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,03856,eval,False,12.234106700000666,ok,346,0,1,345,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,04081,eval,False,0.3473088999999163,ok,17,0,0,17,0,[],image_estimator,47.0,33,1.0
+Atomap / noisy input,04541,eval,False,20.83743289999984,ok,229,2,0,229,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,04818,eval,False,0.1834630000003017,ok,6,0,0,6,0,[],image_estimator,55.0,38,1.0
+Atomap / noisy input,05029,eval,False,6.038818499999252,ok,341,0,0,341,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,05235,eval,False,4.332943000000341,ok,286,0,0,286,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,05548,eval,False,15.287155999999413,ok,197,2,4,193,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,05801,eval,False,30.64585099999931,ok,413,1,0,413,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,05921,eval,False,7.264455099999395,ok,456,0,0,456,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,06533,eval,False,9.474813800000447,ok,446,0,0,446,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,06947,eval,False,11.129736599999887,ok,515,0,0,515,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,07311,eval,False,0.481900300000234,ok,27,0,0,27,0,[],image_estimator,32.0,22,1.0
+Atomap / noisy input,07524,eval,False,5.208829400000468,ok,307,0,0,307,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,07672,eval,False,0.7403426999999283,ok,51,0,0,51,0,[],image_estimator,28.0,20,1.0
+Atomap / noisy input,07947,eval,False,0.45169759999953385,ok,30,0,0,30,0,[],image_estimator,33.0,23,1.0
+Atomap / noisy input,08108,eval,False,7.72789290000037,ok,302,0,0,302,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,08305,eval,False,1.9611470999998346,ok,30,0,0,30,0,[],image_estimator,26.0,18,1.0
+Atomap / noisy input,08483,eval,False,0.3490789000006771,ok,13,0,0,13,0,[],image_estimator,38.0,27,1.0
+Atomap / noisy input,08700,eval,False,1.807357000000593,ok,68,0,0,68,0,[],image_estimator,27.0,19,1.0
+Atomap / noisy input,08869,eval,False,2.017655599999671,ok,60,0,0,60,0,[],image_estimator,28.0,20,1.0
+Atomap / noisy input,08999,eval,False,6.28076239999973,ok,297,0,0,297,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,09223,eval,False,0.5364660000004733,ok,16,0,0,16,0,[],image_estimator,42.0,29,1.0
+Atomap / noisy input,09380,eval,False,0.17471160000059172,ok,5,0,0,5,0,[],image_estimator,25.0,18,1.0
+Atomap / noisy input,09602,eval,False,5.950561999999991,ok,318,0,0,318,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,09809,eval,False,14.420052999999825,ok,476,0,0,476,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,10025,eval,False,4.688579599999684,ok,218,0,0,218,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,10330,eval,False,0.3867276999999376,ok,14,0,0,14,0,[],image_estimator,30.0,21,1.0
+Atomap / noisy input,10606,eval,False,0.5257574000006571,ok,22,0,0,22,0,[],image_estimator,31.0,22,1.0
+Atomap / noisy input,11074,eval,False,1.4362848999999187,ok,62,0,0,62,0,[],image_estimator,20.0,14,1.0
+Atomap / noisy input,11201,eval,False,1.3782463000006828,ok,9,0,0,9,0,[],image_estimator,43.0,30,1.0
+Atomap / noisy input,11443,eval,False,1.0704372999998668,ok,62,0,0,62,0,[],image_estimator,22.0,15,1.0
+Atomap / noisy input,11689,eval,False,0.6586188999999649,ok,33,0,0,33,0,[],image_estimator,28.0,20,1.0
+Atomap / noisy input,11806,eval,False,0.46538540000074136,ok,30,0,0,30,0,[],image_estimator,26.0,18,1.0
+Atomap / noisy input,11941,eval,False,0.5983139999998457,ok,35,0,0,35,0,[],image_estimator,18.0,13,1.0
+Atomap / noisy input,12194,eval,False,6.289668100000199,ok,289,0,0,289,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,12374,eval,False,2.108675800000128,ok,127,0,0,127,0,[],image_estimator,19.0,13,1.0
+Atomap / noisy input,12512,eval,False,2.0182551999996576,ok,64,0,0,64,0,[],image_estimator,22.0,15,1.0
+Atomap / noisy input,12882,eval,False,0.5378786000001128,ok,24,0,0,24,0,[],image_estimator,25.0,18,1.0
+Atomap / noisy input,12994,eval,False,1.9384901000003083,ok,68,0,0,68,0,[],image_estimator,17.0,12,1.0
+Atomap / noisy input,13241,eval,False,3.699421500000426,ok,167,0,0,167,0,[],image_estimator,17.0,12,1.0
+Atomap / noisy input,13359,eval,False,2.683295100000578,ok,145,0,0,145,0,[],image_estimator,20.0,14,1.0
+Atomap / noisy input,13616,eval,False,3.9958417999996527,ok,220,0,0,220,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,13794,eval,False,13.256836100000328,ok,436,0,0,436,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,14097,eval,False,0.24706900000001042,ok,12,0,0,12,0,[],image_estimator,41.0,29,1.0
+Atomap / noisy input,14190,eval,False,1.0349598000002516,ok,53,0,0,53,0,[],image_estimator,20.0,14,1.0
+Atomap / noisy input,14326,eval,False,2.4844020999998975,ok,82,0,0,82,0,[],image_estimator,25.0,18,1.0
+Atomap / noisy input,00132,cal,False,6.195540500000789,ok,289,0,0,289,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,00445,cal,False,35.42528670000047,ok,441,0,0,441,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,00624,cal,False,3.697164999999586,ok,178,0,2,176,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,01220,cal,False,13.637881200000265,ok,348,0,0,348,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,01221,cal,False,11.37249359999987,ok,360,0,0,360,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,01223,cal,False,8.132195400000455,ok,452,0,1,451,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,01233,cal,False,10.071853800000099,ok,474,0,0,474,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,01514,cal,False,3.296986499999548,ok,116,1,1,115,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,02459,cal,False,5.527576499999668,ok,264,0,1,263,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,02466,cal,False,7.717211799999859,ok,408,0,0,408,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,02514,cal,False,8.038125099999888,ok,284,0,0,284,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,02515,cal,False,11.08795949999967,ok,515,0,0,515,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,02517,cal,False,12.474421599999914,ok,494,0,0,494,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,02589,cal,False,6.862628799999584,ok,368,0,0,368,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,03661,cal,False,6.582860000000437,ok,460,0,0,460,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,04221,cal,False,11.363903800000116,ok,378,0,0,378,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,04415,cal,False,13.779731800000263,ok,192,3,1,191,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,04902,cal,False,11.258756899999753,ok,497,0,0,497,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,06062,cal,False,0.2842264000000796,ok,10,0,0,10,0,[],image_estimator,48.0,34,1.0
+Atomap / noisy input,06078,cal,False,13.32626750000054,ok,400,0,0,400,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,06084,cal,False,7.866813999999977,ok,353,0,1,352,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,06109,cal,False,0.36645560000033583,ok,17,0,0,17,0,[],image_estimator,46.0,32,1.0
+Atomap / noisy input,06115,cal,False,0.197052800000165,ok,8,0,0,8,0,[],image_estimator,54.0,38,1.0
+Atomap / noisy input,06127,cal,False,0.17861079999966023,ok,8,0,0,8,0,[],image_estimator,53.0,37,1.0
+Atomap / noisy input,06179,cal,False,14.905927299999348,ok,532,0,0,532,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,06224,cal,False,11.600534199999856,ok,535,0,0,535,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,06701,cal,False,15.419257699999434,ok,499,0,0,499,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,07092,cal,False,5.71062559999973,ok,339,0,0,339,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,07110,cal,False,4.81559389999984,ok,298,0,0,298,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,07146,cal,False,8.814693300000727,ok,358,0,0,358,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,07154,cal,False,6.810137000000395,ok,394,0,0,394,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,08202,cal,False,0.5333973000006154,ok,27,0,0,27,0,[],image_estimator,36.0,25,1.0
+Atomap / noisy input,10156,cal,False,14.481446400000095,ok,280,0,0,280,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,10469,cal,False,0.6535549000000174,ok,33,0,0,33,0,[],image_estimator,32.0,22,1.0
+Atomap / noisy input,10816,cal,False,1.4504952999996021,ok,88,0,0,88,0,[],image_estimator,20.0,14,1.0
+Atomap / noisy input,10841,cal,False,1.2085015000002386,ok,53,0,0,53,0,[],image_estimator,18.0,13,1.0
+Atomap / noisy input,10870,cal,False,1.6432088999999905,ok,35,0,0,35,0,[],image_estimator,18.0,13,1.0
+Atomap / noisy input,10877,cal,False,0.8960351000005176,ok,40,0,0,40,0,[],image_estimator,17.0,12,1.0
+Atomap / noisy input,10888,cal,False,2.22299380000004,ok,79,0,0,79,0,[],image_estimator,17.0,12,1.0
+Atomap / noisy input,10919,cal,False,1.028109200000472,ok,62,0,0,62,0,[],image_estimator,20.0,14,1.0
+Atomap / noisy input,10920,cal,False,1.0055956999995033,ok,59,0,0,59,0,[],image_estimator,20.0,14,1.0
+Atomap / noisy input,10939,cal,False,1.1521271000001434,ok,57,0,0,57,0,[],image_estimator,21.0,15,1.0
+Atomap / noisy input,10948,cal,False,0.9878633999996964,ok,51,0,0,51,0,[],image_estimator,21.0,15,1.0
+Atomap / noisy input,10960,cal,False,0.9466225999995004,ok,50,0,0,50,0,[],image_estimator,21.0,15,1.0
+Atomap / noisy input,12666,cal,False,1.5477245000001858,ok,56,0,0,56,0,[],image_estimator,28.0,20,1.0
+Atomap / noisy input,12668,cal,False,1.6844293000003745,ok,54,0,0,54,0,[],image_estimator,28.0,20,1.0
+Atomap / noisy input,12672,cal,False,0.9442910999996457,ok,49,0,0,49,0,[],image_estimator,27.0,19,1.0
+Atomap / noisy input,12713,cal,False,1.5087096999995993,ok,37,0,0,37,0,[],image_estimator,28.0,20,1.0
+Atomap / noisy input,12743,cal,False,6.936983200000213,ok,256,0,0,256,0,[],image_estimator,6.0,4,1.0
+Atomap / noisy input,13929,cal,False,7.296720999999707,ok,327,0,0,327,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,00296,eval,False,0.4561442000003808,ok,22,0,0,22,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,01375,eval,False,0.44570000000021537,ok,23,1,0,23,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,01643,eval,False,0.388535299999603,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,03521,eval,False,0.47391109999989567,ok,24,0,0,24,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,03856,eval,False,0.5275406999999177,ok,30,0,1,29,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,04081,eval,False,0.3912519000004977,ok,19,0,0,19,0,[],image_estimator,47.0,33,1.0
+Atomap / noNoise,04541,eval,False,0.4223968000005698,ok,18,6,0,18,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,04818,eval,False,0.15356169999995473,ok,2,0,0,2,0,[],image_estimator,56.0,39,1.0
+Atomap / noNoise,05029,eval,False,0.43730999999934284,ok,23,1,0,23,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,05235,eval,False,0.4299844999995912,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,05548,eval,False,0.4272655000004306,ok,24,0,0,24,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,05801,eval,False,0.424352999999428,ok,21,0,0,21,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,05921,eval,False,0.29325320000043575,ok,12,3,4,8,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,06533,eval,False,0.3986064999999144,ok,20,0,9,11,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,06947,eval,False,0.3797489000007772,ok,13,1,5,8,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,07311,eval,False,0.3403140999998868,ok,12,0,0,12,0,[],image_estimator,33.0,23,1.0
+Atomap / noNoise,07524,eval,False,0.6860598000002938,ok,34,0,0,34,0,[],image_estimator,35.0,24,1.0
+Atomap / noNoise,07672,eval,False,1.1481965999992099,ok,71,0,0,71,0,[],image_estimator,28.0,20,1.0
+Atomap / noNoise,07947,eval,False,0.6867566000000807,ok,42,0,0,42,0,[],image_estimator,33.0,23,1.0
+Atomap / noNoise,08108,eval,False,1.202447000000575,ok,71,0,0,71,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,08305,eval,False,0.15352249999978085,ok,7,0,0,7,0,[],image_estimator,26.0,18,1.0
+Atomap / noNoise,08483,eval,False,0.22165839999979653,ok,11,0,0,11,0,[],image_estimator,39.0,27,1.0
+Atomap / noNoise,08700,eval,False,1.1942564000000857,ok,72,0,0,72,0,[],image_estimator,27.0,19,1.0
+Atomap / noNoise,08869,eval,False,1.4314281000006304,ok,72,0,0,72,0,[],image_estimator,28.0,20,1.0
+Atomap / noNoise,08999,eval,False,0.6673999000004187,ok,28,1,0,28,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,09223,eval,False,0.33548999999948137,ok,16,0,0,16,0,[],image_estimator,43.0,30,1.0
+Atomap / noNoise,09380,eval,False,0.10868109999955777,ok,5,0,0,5,0,[],image_estimator,25.0,18,1.0
+Atomap / noNoise,09602,eval,False,2.8890107000006537,ok,23,0,0,23,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,09809,eval,False,1.239602200000263,ok,82,0,0,82,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,10025,eval,False,0.8118475000001126,ok,50,4,0,50,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,10330,eval,False,0.301283699999658,ok,17,0,0,17,0,[],image_estimator,30.0,21,1.0
+Atomap / noNoise,10606,eval,False,0.33706789999996545,ok,14,0,0,14,0,[],image_estimator,32.0,22,1.0
+Atomap / noNoise,11074,eval,False,0.42309409999961645,ok,21,0,0,21,0,[],image_estimator,21.0,15,1.0
+Atomap / noNoise,11201,eval,False,0.26108469999962836,ok,12,0,0,12,0,[],image_estimator,43.0,30,1.0
+Atomap / noNoise,11443,eval,False,3.208633600000212,ok,107,0,0,107,0,[],image_estimator,22.0,15,1.0
+Atomap / noNoise,11689,eval,False,0.4145587000002706,ok,15,0,0,15,0,[],image_estimator,28.0,20,1.0
+Atomap / noNoise,11806,eval,False,1.4800230999999258,ok,60,0,0,60,0,[],image_estimator,26.0,18,1.0
+Atomap / noNoise,11941,eval,False,0.17292929999985063,ok,9,0,0,9,0,[],image_estimator,18.0,13,1.0
+Atomap / noNoise,12194,eval,False,2.9478531000004295,ok,198,0,0,198,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,12374,eval,False,1.8436703999996098,ok,134,0,0,134,0,[],image_estimator,19.0,13,1.0
+Atomap / noNoise,12512,eval,False,1.4844822999993994,ok,108,0,0,108,0,[],image_estimator,22.0,15,1.0
+Atomap / noNoise,12882,eval,False,0.21776520000003075,ok,9,0,0,9,0,[],image_estimator,25.0,18,1.0
+Atomap / noNoise,12994,eval,False,0.24782649999997375,ok,17,0,0,17,0,[],image_estimator,17.0,12,1.0
+Atomap / noNoise,13241,eval,False,2.8206044999997175,ok,206,0,0,206,0,[],image_estimator,17.0,12,1.0
+Atomap / noNoise,13359,eval,False,3.938417400000617,ok,169,0,0,169,0,[],image_estimator,20.0,14,1.0
+Atomap / noNoise,13616,eval,False,2.511663700000099,ok,128,0,0,128,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,13794,eval,False,2.212969800000792,ok,127,0,0,127,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,14097,eval,False,0.17748029999984283,ok,7,0,0,7,0,[],image_estimator,41.0,29,1.0
+Atomap / noNoise,14190,eval,False,0.18606279999949038,ok,8,0,0,8,0,[],image_estimator,20.0,14,1.0
+Atomap / noNoise,14326,eval,False,1.1052018000000317,ok,86,0,0,86,0,[],image_estimator,25.0,18,1.0
+Atomap / noNoise,00132,cal,False,0.3225717999994231,ok,18,1,0,18,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,00445,cal,False,0.34535260000029666,ok,16,4,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,00624,cal,False,0.31187169999975595,ok,16,7,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,01220,cal,False,0.2811262999994142,ok,16,1,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,01221,cal,False,0.3067330999992919,ok,17,1,0,17,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,01223,cal,False,0.3494138000005478,ok,18,1,0,18,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,01233,cal,False,0.331031300000177,ok,18,0,1,17,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,01514,cal,False,0.32120690000010654,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,02459,cal,False,0.32132780000029015,ok,16,4,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,02466,cal,False,0.35965649999980087,ok,16,4,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,02514,cal,False,0.33387109999966924,ok,16,4,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,02515,cal,False,0.3632784999999785,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,02517,cal,False,0.37941849999970145,ok,16,4,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,02589,cal,False,0.27854630000001634,ok,12,3,0,12,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,03661,cal,False,0.24651119999998627,ok,14,0,0,14,0,[],image_estimator,44.0,31,1.0
+Atomap / noNoise,04221,cal,False,0.3287940999998682,ok,16,0,4,12,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,04415,cal,False,0.34078039999985776,ok,24,0,0,24,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,04902,cal,False,0.39911819999997533,ok,26,2,2,24,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,06062,cal,False,0.3298113999999259,ok,20,0,0,20,0,[],image_estimator,48.0,34,1.0
+Atomap / noNoise,06078,cal,False,0.04006699999990815,ok,1,0,0,1,0,[],image_estimator,45.0,31,1.0
+Atomap / noNoise,06084,cal,False,0.4980554999992819,ok,28,0,0,28,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,06109,cal,False,0.3823685999996087,ok,24,0,0,24,0,[],image_estimator,47.0,33,1.0
+Atomap / noNoise,06115,cal,False,0.2282273000000714,ok,12,0,0,12,0,[],image_estimator,55.0,38,1.0
+Atomap / noNoise,06127,cal,False,0.04894360000071174,ok,1,0,0,1,0,[],image_estimator,54.0,38,1.0
+Atomap / noNoise,06179,cal,False,0.3379813000001377,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,06224,cal,False,0.3110909000006359,ok,15,2,0,15,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,06701,cal,False,0.36989189999985683,ok,20,3,1,19,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,07092,cal,False,0.42254549999961455,ok,26,0,0,26,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,07110,cal,False,0.4387529000005088,ok,28,0,0,28,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,07146,cal,False,0.3551089000002321,ok,22,1,0,22,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,07154,cal,False,0.36552579999988666,ok,20,0,1,19,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,08202,cal,False,0.4309367000005295,ok,29,0,0,29,0,[],image_estimator,36.0,25,1.0
+Atomap / noNoise,10156,cal,False,0.5968677999999272,ok,43,0,0,43,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,10469,cal,False,2.377988500000356,ok,38,0,0,38,0,[],image_estimator,32.0,22,1.0
+Atomap / noNoise,10816,cal,False,1.0438924999998562,ok,78,0,0,78,0,[],image_estimator,20.0,14,1.0
+Atomap / noNoise,10841,cal,False,0.733260999999402,ok,54,0,0,54,0,[],image_estimator,18.0,13,1.0
+Atomap / noNoise,10870,cal,False,0.1744604999994408,ok,12,0,0,12,0,[],image_estimator,18.0,13,1.0
+Atomap / noNoise,10877,cal,False,0.1425601999999344,ok,10,0,0,10,0,[],image_estimator,17.0,12,1.0
+Atomap / noNoise,10888,cal,False,1.8919054000007236,ok,83,0,0,83,0,[],image_estimator,17.0,12,1.0
+Atomap / noNoise,10919,cal,False,0.7032005000000936,ok,46,0,0,46,0,[],image_estimator,20.0,14,1.0
+Atomap / noNoise,10920,cal,True,0.007743099999970582,ok,46,0,0,46,0,[],image_estimator,20.0,14,1.0
+Atomap / noNoise,10939,cal,False,0.9323694000004252,ok,42,0,0,42,0,[],image_estimator,20.0,14,1.0
+Atomap / noNoise,10948,cal,False,0.9667982999999367,ok,40,0,0,40,0,[],image_estimator,21.0,15,1.0
+Atomap / noNoise,10960,cal,False,0.21061439999994036,ok,12,0,0,12,0,[],image_estimator,21.0,15,1.0
+Atomap / noNoise,12666,cal,False,0.8484914000000572,ok,63,0,0,63,0,[],image_estimator,28.0,20,1.0
+Atomap / noNoise,12668,cal,False,0.9555012000000715,ok,63,0,0,63,0,[],image_estimator,28.0,20,1.0
+Atomap / noNoise,12672,cal,False,0.1397980000001553,ok,8,0,0,8,0,[],image_estimator,27.0,19,1.0
+Atomap / noNoise,12713,cal,False,3.9456936000005953,ok,36,0,0,36,0,[],image_estimator,28.0,20,1.0
+Atomap / noNoise,12743,cal,False,2.524700899999516,ok,173,0,0,173,0,[],image_estimator,6.0,4,1.0
+Atomap / noNoise,13929,cal,False,1.6506667999992715,ok,116,0,0,116,0,[],image_estimator,20.0,14,1.0
+Atomap / noBackgroundnoNoise,00296,eval,False,0.38569809999989957,ok,22,0,0,22,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,01375,eval,False,0.41154069999993226,ok,23,0,0,23,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,01643,eval,True,0.0018796000003931113,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,03521,eval,True,0.0016940999994403683,ok,24,0,0,24,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,03856,eval,True,0.0015833000006750808,ok,30,0,1,29,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,04081,eval,True,0.0016260000002148445,ok,19,0,0,19,0,[],image_estimator,47.0,33,1.0
+Atomap / noBackgroundnoNoise,04541,eval,True,0.0017828999998528161,ok,18,6,0,18,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,04818,eval,True,0.0017324000000371598,ok,2,0,0,2,0,[],image_estimator,56.0,39,1.0
+Atomap / noBackgroundnoNoise,05029,eval,False,0.4266695999995136,ok,23,1,0,23,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,05235,eval,False,0.37991969999984576,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,05548,eval,True,0.002360600000429258,ok,24,0,0,24,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,05801,eval,True,0.0022922999996808358,ok,21,0,0,21,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,05921,eval,False,0.26128480000079435,ok,14,2,3,11,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,06533,eval,False,2.4907760999994935,ok,20,0,0,20,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,06947,eval,False,0.2973859999992783,ok,13,1,0,13,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,07311,eval,True,0.0016888999998627696,ok,12,0,0,12,0,[],image_estimator,33.0,23,1.0
+Atomap / noBackgroundnoNoise,07524,eval,False,0.5833667999995669,ok,34,0,0,34,0,[],image_estimator,37.0,26,1.0
+Atomap / noBackgroundnoNoise,07672,eval,True,0.001997900000787922,ok,71,0,0,71,0,[],image_estimator,28.0,20,1.0
+Atomap / noBackgroundnoNoise,07947,eval,False,0.7177390000006199,ok,42,0,0,42,0,[],image_estimator,34.0,24,1.0
+Atomap / noBackgroundnoNoise,08108,eval,False,0.36897289999978966,ok,13,0,0,13,0,[],image_estimator,43.0,30,1.0
+Atomap / noBackgroundnoNoise,08305,eval,False,0.16539080000075046,ok,7,0,0,7,0,[],image_estimator,27.0,19,1.0
+Atomap / noBackgroundnoNoise,08483,eval,True,0.0024982000004456495,ok,11,0,0,11,0,[],image_estimator,39.0,27,1.0
+Atomap / noBackgroundnoNoise,08700,eval,False,1.2562502000000677,ok,72,0,0,72,0,[],image_estimator,28.0,20,1.0
+Atomap / noBackgroundnoNoise,08869,eval,True,0.001692900000307418,ok,72,0,0,72,0,[],image_estimator,28.0,20,1.0
+Atomap / noBackgroundnoNoise,08999,eval,False,0.32174990000021353,ok,18,0,0,18,0,[],image_estimator,47.0,33,1.0
+Atomap / noBackgroundnoNoise,09223,eval,False,0.28681929999947897,ok,16,0,0,16,0,[],image_estimator,43.0,30,1.0
+Atomap / noBackgroundnoNoise,09380,eval,True,0.0019456999998510582,ok,5,0,0,5,0,[],image_estimator,25.0,18,1.0
+Atomap / noBackgroundnoNoise,09602,eval,False,1.271398799999588,ok,23,0,0,23,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,09809,eval,False,1.4293608000007225,ok,60,0,0,60,0,[],image_estimator,28.0,20,1.0
+Atomap / noBackgroundnoNoise,10025,eval,False,0.4490765000000465,ok,16,0,0,16,0,[],image_estimator,44.0,31,1.0
+Atomap / noBackgroundnoNoise,10330,eval,False,1.5404507000002923,ok,48,0,0,48,0,[],image_estimator,33.0,23,1.0
+Atomap / noBackgroundnoNoise,10606,eval,True,0.0016646000003674999,ok,14,0,0,14,0,[],image_estimator,32.0,22,1.0
+Atomap / noBackgroundnoNoise,11074,eval,True,0.001575599999341648,ok,21,0,0,21,0,[],image_estimator,21.0,15,1.0
+Atomap / noBackgroundnoNoise,11201,eval,True,0.0017692999999781023,ok,12,0,0,12,0,[],image_estimator,43.0,30,1.0
+Atomap / noBackgroundnoNoise,11443,eval,True,0.0013965999996798928,ok,107,0,0,107,0,[],image_estimator,22.0,15,1.0
+Atomap / noBackgroundnoNoise,11689,eval,False,0.5777134999998452,ok,26,0,0,26,0,[],image_estimator,28.0,20,1.0
+Atomap / noBackgroundnoNoise,11806,eval,False,0.9671219000001656,ok,60,0,0,60,0,[],image_estimator,26.0,18,1.0
+Atomap / noBackgroundnoNoise,11941,eval,False,0.15409399999953166,ok,9,0,0,9,0,[],image_estimator,18.0,13,1.0
+Atomap / noBackgroundnoNoise,12194,eval,False,0.6962949000007939,ok,44,0,0,44,0,[],image_estimator,24.0,17,1.0
+Atomap / noBackgroundnoNoise,12374,eval,False,1.910405699999501,ok,131,0,0,131,0,[],image_estimator,20.0,14,1.0
+Atomap / noBackgroundnoNoise,12512,eval,True,0.005264500000521366,ok,108,0,0,108,0,[],image_estimator,22.0,15,1.0
+Atomap / noBackgroundnoNoise,12882,eval,True,0.00213889999940875,ok,9,0,0,9,0,[],image_estimator,25.0,18,1.0
+Atomap / noBackgroundnoNoise,12994,eval,False,0.3127637000006871,ok,19,0,0,19,0,[],image_estimator,17.0,12,1.0
+Atomap / noBackgroundnoNoise,13241,eval,True,0.002186200000323879,ok,206,0,0,206,0,[],image_estimator,17.0,12,1.0
+Atomap / noBackgroundnoNoise,13359,eval,True,0.002294499999152322,ok,169,0,0,169,0,[],image_estimator,20.0,14,1.0
+Atomap / noBackgroundnoNoise,13616,eval,False,0.8095032999999603,ok,49,0,0,49,0,[],image_estimator,27.0,19,1.0
+Atomap / noBackgroundnoNoise,13794,eval,False,1.1018530999999712,ok,75,0,0,75,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,14097,eval,True,0.0023697999995420105,ok,7,0,0,7,0,[],image_estimator,41.0,29,1.0
+Atomap / noBackgroundnoNoise,14190,eval,False,0.824627099999816,ok,52,0,0,52,0,[],image_estimator,21.0,15,1.0
+Atomap / noBackgroundnoNoise,14326,eval,False,1.188767500000722,ok,86,0,0,86,0,[],image_estimator,25.0,18,1.0
+Atomap / noBackgroundnoNoise,00132,cal,False,0.35953059999974357,ok,18,1,0,18,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,00445,cal,True,0.0027065000003858586,ok,16,4,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,00624,cal,True,0.0020411999994394137,ok,16,7,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,01220,cal,True,0.00203239999973448,ok,16,1,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,01221,cal,False,0.3528857000001153,ok,17,1,0,17,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,01223,cal,False,0.35918839999976626,ok,18,1,0,18,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,01233,cal,False,0.34435209999992367,ok,18,0,1,17,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,01514,cal,True,0.0022427999992942205,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,02459,cal,True,0.0018357999997533625,ok,16,4,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,02466,cal,False,0.35145340000053693,ok,16,1,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,02514,cal,True,0.00264699999934237,ok,16,4,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,02515,cal,True,0.002224900000328489,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,02517,cal,False,0.36436589999993885,ok,16,4,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,02589,cal,False,0.2172110999999859,ok,9,0,0,9,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,03661,cal,False,0.23281889999998384,ok,12,0,0,12,0,[],image_estimator,46.0,32,1.0
+Atomap / noBackgroundnoNoise,04221,cal,False,0.3469236999999339,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,04415,cal,True,0.0022460999998656916,ok,24,0,0,24,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,04902,cal,False,0.3132857000000513,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,06062,cal,True,0.0024041000006036484,ok,20,0,0,20,0,[],image_estimator,48.0,34,1.0
+Atomap / noBackgroundnoNoise,06078,cal,True,0.0019942999997510924,ok,1,0,0,1,0,[],image_estimator,45.0,31,1.0
+Atomap / noBackgroundnoNoise,06084,cal,False,0.05080960000032064,ok,1,0,0,1,0,[],image_estimator,45.0,31,1.0
+Atomap / noBackgroundnoNoise,06109,cal,False,0.3529657999997653,ok,20,0,0,20,0,[],image_estimator,48.0,34,1.0
+Atomap / noBackgroundnoNoise,06115,cal,True,0.002974799999719835,ok,12,0,0,12,0,[],image_estimator,55.0,38,1.0
+Atomap / noBackgroundnoNoise,06127,cal,False,2.6831089000006614,ok,12,0,0,12,0,[],image_estimator,55.0,38,1.0
+Atomap / noBackgroundnoNoise,06179,cal,True,0.0028362999992168625,ok,16,0,0,16,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,06224,cal,True,0.0023989999999685097,ok,15,2,0,15,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,06701,cal,True,0.0023609999998370768,ok,20,3,1,19,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,07092,cal,False,0.5011860999993587,ok,26,0,0,26,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,07110,cal,False,0.47882729999946605,ok,28,0,0,28,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,07146,cal,False,0.41743140000016865,ok,22,1,0,22,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,07154,cal,False,0.4392305999999735,ok,20,0,0,20,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,08202,cal,True,0.0030111000005490496,ok,29,0,0,29,0,[],image_estimator,36.0,25,1.0
+Atomap / noBackgroundnoNoise,10156,cal,True,0.001634600000215869,ok,43,0,0,43,0,[],image_estimator,6.0,4,1.0
+Atomap / noBackgroundnoNoise,10469,cal,True,0.001538800000162155,ok,38,0,0,38,0,[],image_estimator,32.0,22,1.0
+Atomap / noBackgroundnoNoise,10816,cal,False,1.0945436000001791,ok,75,0,0,75,0,[],image_estimator,20.0,14,1.0
+Atomap / noBackgroundnoNoise,10841,cal,True,0.0024907000006351154,ok,54,0,0,54,0,[],image_estimator,18.0,13,1.0
+Atomap / noBackgroundnoNoise,10870,cal,False,0.2157574000002569,ok,9,0,0,9,0,[],image_estimator,18.0,13,1.0
+Atomap / noBackgroundnoNoise,10877,cal,True,0.0027944999992541852,ok,10,0,0,10,0,[],image_estimator,17.0,12,1.0
+Atomap / noBackgroundnoNoise,10888,cal,False,2.520996600000217,ok,85,0,0,85,0,[],image_estimator,17.0,12,1.0
+Atomap / noBackgroundnoNoise,10919,cal,True,0.002646699999786506,ok,46,0,0,46,0,[],image_estimator,20.0,14,1.0
+Atomap / noBackgroundnoNoise,10920,cal,True,0.00225010000031034,ok,46,0,0,46,0,[],image_estimator,20.0,14,1.0
+Atomap / noBackgroundnoNoise,10939,cal,True,0.0019560999999157502,ok,42,0,0,42,0,[],image_estimator,20.0,14,1.0
+Atomap / noBackgroundnoNoise,10948,cal,True,0.001783699999577948,ok,40,0,0,40,0,[],image_estimator,21.0,15,1.0
+Atomap / noBackgroundnoNoise,10960,cal,False,0.8895083999996132,ok,39,0,0,39,0,[],image_estimator,21.0,15,1.0
+Atomap / noBackgroundnoNoise,12666,cal,True,0.00265890000082436,ok,63,0,0,63,0,[],image_estimator,28.0,20,1.0
+Atomap / noBackgroundnoNoise,12668,cal,True,0.002480199999808974,ok,63,0,0,63,0,[],image_estimator,28.0,20,1.0
+Atomap / noBackgroundnoNoise,12672,cal,False,2.3210500000004686,ok,64,0,0,64,0,[],image_estimator,28.0,20,1.0
+Atomap / noBackgroundnoNoise,12713,cal,True,0.0024665000000823056,ok,36,0,0,36,0,[],image_estimator,28.0,20,1.0
+Atomap / noBackgroundnoNoise,12743,cal,False,0.5554901000004975,ok,26,0,0,26,0,[],image_estimator,28.0,20,1.0
+Atomap / noBackgroundnoNoise,13929,cal,False,1.979793100000279,ok,114,0,0,114,0,[],image_estimator,22.0,15,1.0

@@ -1,0 +1,15 @@
+folder,role,files,evaluation_present,calibration_present
+image,noisy input,14364,50,50
+noNoise,noise-free image control,14364,50,50
+noBackgroundnoNoise,noise-free/background-free image control,14364,50,50
+gaussianMask,"reference peaks, not direct atom coordinates",14364,50,50
+circularMask,mask-centroid reference,14364,50,50
+smallcircularMask,alternate mask-centroid reference,14364,50,50
+position,continuous coordinates; explicit convention required,14364,50,50
+positionRadius,coordinates and radius; explicit convention required,14364,50,50
+params,metadata; schema/units must be verified before stratification,14364,50,50
+radius,label-radius metadata,14364,50,50
+smallradius,label-radius metadata,14364,50,50
+noNoiseNoBackgroundSuperresolution,synthetic transformed target; not an acquired image,14364,50,50
+noNoiseNoBackgroundUpinterpolation2x,resampled control; not used without a verified transform,14364,50,50
+noNoiseUpinterpolation2x,resampled control; not used without a verified transform,14364,50,50

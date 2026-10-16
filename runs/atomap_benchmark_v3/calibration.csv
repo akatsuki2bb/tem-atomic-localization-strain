@@ -1,0 +1,28 @@
+method,reference,available,offered_frames,usable_frames,subtract_dx_px,subtract_dy_px,transform
+Atomap / noisy input,gaussian,True,50,50,0.0008515078135644671,-0.7280724472908631,translation_only
+Atomap / noisy input,circular,True,50,50,-0.4358804018592135,-0.9225472184249277,translation_only
+Atomap / noisy input,smallcircular,True,50,50,-0.4358804018592135,-0.8969583105961441,translation_only
+Atomap / noNoise,gaussian,True,50,48,-0.0016848147138261993,0.0005808725774336665,translation_only
+Atomap / noNoise,circular,True,50,48,-0.5309721038845403,-0.45237523111732436,translation_only
+Atomap / noNoise,smallcircular,True,50,48,-0.5309721038845403,-0.41951806541116277,translation_only
+Atomap / noBackgroundnoNoise,gaussian,True,50,48,-0.0023060457721442162,0.003197899859262776,translation_only
+Atomap / noBackgroundnoNoise,circular,True,50,48,-0.5382502200137864,-0.4799543023914321,translation_only
+Atomap / noBackgroundnoNoise,smallcircular,True,50,48,-0.5382502200137864,-0.44339033350497203,translation_only
+AtomSegNet / direct,gaussian,False,50,0,,,translation_only
+AtomSegNet / direct,circular,False,50,0,,,translation_only
+AtomSegNet / direct,smallcircular,False,50,0,,,translation_only
+HRNet / direct,gaussian,False,50,0,,,translation_only
+HRNet / direct,circular,False,50,0,,,translation_only
+HRNet / direct,smallcircular,False,50,0,,,translation_only
+U-Net++ / direct,gaussian,False,50,0,,,translation_only
+U-Net++ / direct,circular,False,50,0,,,translation_only
+U-Net++ / direct,smallcircular,False,50,0,,,translation_only
+AtomSegNet / N2V,gaussian,False,50,0,,,translation_only
+AtomSegNet / N2V,circular,False,50,0,,,translation_only
+AtomSegNet / N2V,smallcircular,False,50,0,,,translation_only
+HRNet / N2V,gaussian,False,50,0,,,translation_only
+HRNet / N2V,circular,False,50,0,,,translation_only
+HRNet / N2V,smallcircular,False,50,0,,,translation_only
+U-Net++ / N2V,gaussian,False,50,0,,,translation_only
+U-Net++ / N2V,circular,False,50,0,,,translation_only
+U-Net++ / N2V,smallcircular,False,50,0,,,translation_only
