@@ -1,0 +1,23 @@
+{
+  "benchmark_version": "3.0",
+  "source_upload": "atomap_benchmark_v3.rar",
+  "fold": 2,
+  "evaluation_frames": 50,
+  "calibration_frames": 50,
+  "main_reference": "gaussian",
+  "main_state": "raw",
+  "detection_gate_fraction": 0.1,
+  "localization_gate_fraction": 0.25,
+  "bootstrap_resamples": 1000,
+  "excluded": [
+    "SwinUNet direct fold 4: different evaluation population"
+  ],
+  "complete_archive_committed": false,
+  "caveats": [
+    "independent train/eval split not re-audited",
+    "legacy raw coordinate convention requires checking",
+    "network calibration not available",
+    "position labels withheld pending coordinate convention audit",
+    "no verified pixel scale"
+  ]
+}

@@ -4,6 +4,8 @@ Denoising, atomic-column segmentation, sub-pixel localization and lattice diagno
 
 We compare four dual-head networks of matched size, about 9.1 M parameters each, on 14,364 paired 256 x 256 frames from TEM-ImageNet-v1.3. The models take a noisy simulated frame and return a denoised image and an atomic-column probability map. The question is whether a model that reconstructs the image better also measures the lattice better. It does not: on five folds, direct SwinUNet gave the only denoising result above the Gaussian reference, at 30.82 dB, while direct AtomSegNet gave the highest segmentation IoU, 0.8763. Image fidelity and coordinate quality are therefore reported as separate measurements throughout this repository, and no single score is formed from them.
 
+A later [Atomap v3 benchmark](runs/atomap_benchmark_v3/README.md) adds a noisy-image classical peak-fitting baseline on 50 common fold-2 frames, with its own measurement caveats.
+
 The headline comparison is in [`tables/benchmark_summary.csv`](tables/benchmark_summary.csv). A later run, archived complete in [`runs/20260919-200658/`](runs/20260919-200658/), adds coordinate accuracy, controlled shifts, a perturbation grid and device timings on one selected fold.
 
 ```mermaid
@@ -197,6 +199,28 @@ jupyter lab notebooks/03_benchmark_and_physics.ipynb
 ```
 
 The benchmark was run under Windows 11 with Python 3.14.2, PyTorch 2.11.0+cu128 and NumPy 2.5.1 on an RTX 3070 Ti Laptop GPU. A conda specification is in [`environment.yml`](environment.yml), the checkpoint layout and the dataset expectations are in [`docs/reproducibility.md`](docs/reproducibility.md) and [`data/README.md`](data/README.md).
+
+## Atomap comparison: October 2026 benchmark
+
+A separate v3 localization benchmark compares Atomap peak fitting on simulated noisy/clean images with three CNN segmenters on **50 common fold-2 evaluation frames**, using Gaussian-mask peaks as the reference, raw coordinates, a **0.10 × spacing detection gate** and a **0.25 × spacing localization gate**.
+
+| Method | Precision | Recall | F1 | Matched RMSE (px) | Localization coverage |
+|---|---:|---:|---:|---:|---:|
+| Atomap / noisy input | 0.185 | 0.409 | 0.255 | 2.155 | 55.6% |
+| Atomap / noise-free control | 0.921 | 0.557 | 0.695 | 0.978 | 56.8% |
+| Atomap / noise- and background-free control | 0.947 | 0.501 | 0.656 | 0.581 | 50.7% |
+| AtomSegNet / direct | 0.801 | 0.900 | 0.847 | 1.187 | 99.6% |
+| HRNet / direct | 0.803 | 0.900 | 0.849 | 1.237 | 99.2% |
+| U-Net++ / direct | 0.801 | 0.896 | 0.846 | 1.247 | 99.2% |
+| AtomSegNet / N2V | 0.762 | 0.850 | 0.804 | 1.339 | 98.3% |
+| HRNet / N2V | 0.755 | 0.844 | 0.797 | 1.375 | 97.7% |
+| U-Net++ / N2V | 0.806 | 0.904 | 0.852 | 1.239 | 99.1% |
+
+On this specific protocol, Atomap on noisy input has F1 0.255 and matched RMSE 2.155 px; the directly trained networks have F1 0.846–0.849 and RMSE 1.187–1.247 px. These are *different conditional quantities*: RMSE uses only gated matches, while F1 penalizes missing and spurious columns. The clean Atomap controls are **not** experimentally accessible substitutes for noisy-frame processing.
+
+**Scope and cautions:** This is a single-fold, 50-frame comparison, not a new five-fold model-ranking result. Training/evaluation membership was inherited from a prior localization run and was not independently re-audited in the v3 manifest. Translation calibration is available for the Atomap image controls but **not** for the network rows; therefore the table uses raw coordinates for all methods. The stored network peak convention also needs independent verification. Continuous `position` labels were not used because axis order/origin/scale were not confirmed. The frame-bootstrap intervals do not establish acquisition or structural independence, and no verified pixel-to-picometre scale is applied. SwinUNet fold 4 was excluded as a different population.
+
+See the [Atomap v3 benchmark notes and machine-readable main comparison](runs/atomap_benchmark_v3/README.md). The full original archive also contains detailed per-frame matches, figures, and caches that are **not part of this curated summary commit**.
 
 ## Citation
 
