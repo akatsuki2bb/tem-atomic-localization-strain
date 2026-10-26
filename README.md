@@ -227,7 +227,8 @@ Detected centers are fitted to a reference lattice and the residual displacement
 | [`notebooks/03_benchmark_and_physics.ipynb`](notebooks/03_benchmark_and_physics.ipynb) | Four-model benchmark and downstream physics analyses |
 | [`tables/`](tables/) | Benchmark summary, centroid metrics, input ablation, detector floor and checkpoint inventory |
 | [`runs/20260919-200658/`](runs/20260919-200658/) | Archived single-fold diagnostic run (tables, figures, panels, manifest and logs) |
-| [`results/2026-10-atomap-full-benchmark/`](results/2026-10-atomap-full-benchmark/) | Full-population Atomap comparison, visualizations, citations and transcribed metrics |\n| [`runs/atomap_benchmark_v3/`](runs/atomap_benchmark_v3/) | Historical 50-frame Atomap baseline comparison |
+| [`results/2026-10-atomap-full-benchmark/`](results/2026-10-atomap-full-benchmark/) | Full-population Atomap comparison, visualizations, citations and transcribed metrics |
+| [`runs/atomap_benchmark_v3/`](runs/atomap_benchmark_v3/) | Historical 50-frame Atomap baseline comparison |
 | [`assets/`](assets/) | Comparison figures, architecture schematics, qualitative strips and strain/transfer examples |
 | [`results/`](results/) | Earlier per-fold localization, precision, strain and transfer output |
 | [`docs/`](docs/) | [`methods.md`](docs/methods.md), [`model-comparison.md`](docs/model-comparison.md), [`reproducibility.md`](docs/reproducibility.md), [`supplementary-results.md`](docs/supplementary-results.md) and [`portfolio-blurb.md`](docs/portfolio-blurb.md) |
