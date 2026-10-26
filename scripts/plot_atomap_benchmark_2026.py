@@ -51,7 +51,7 @@ def f1_comparison() -> None:
     ax.bar_label(bars, fmt="%.3f", padding=4)
     ax.set(
         ylim=(0, 1.0), xticks=np.arange(len(methods)),
-        xticklabels=[m.replace(" ", "\\n") for m in methods],
+        xticklabels=[m.replace(" ", chr(10)) for m in methods],
         ylabel="Detection F1",
         title="Atomic-column detection: 12,766 held-out simulated frames",
     )
