@@ -1,0 +1,102 @@
+indexing 299 columns from section 8's R (AtomSegNet no_n2v on 11028)
+  calibration: image grid 0.11678 x 0.11678 A/px (8a), simulator grid 0.11632 A/px
+    iter 0: 2 motif site(s), window 4.17, 299/299 inside, median residual 0.320
+    iter 1: 2 motif site(s), window 0.87, 298/299 inside, median residual 0.262
+    iter 2: 2 motif site(s), window 0.89, 298/299 inside, median residual 0.265
+    iter 3: 2 motif site(s), window 0.88, 298/299 inside, median residual 0.260
+    iter 4: 2 motif site(s), window 0.88, 298/299 inside, median residual 0.260
+    iter 5: 2 motif site(s), window 0.88, 298/299 inside, median residual 0.260
+  localization SD x 0.173, y 0.224 px = 2.02 x 2.62 pm from 8 independent draws at the frame's Poisson-equivalent dose 9.2 counts/px (read noise 1.5), fold 1 checkpoint, 298 sites, 0.0% outliers
+
+cell: |a1| 2.4603 A, |a2| 2.4604 A, angle 119.96 deg; 2 column(s) per cell
+indexed 298/299 (1 outside the 0.88 px window, 0 sharing a site); 67 edge columns dropped, gradient over 9 neighbours
+median residual 0.260 px, per-axis residual spread 0.227 px (includes real displacement)
+small strain relative to the fitted cell; uniform strain is absorbed by that fit (see the cell check)
+
+cell against atoms (8a, image grid): |a1| 2.4603 vs 2.4560 A, |a2| 2.4604 vs 2.4560 A
+  lattice-parameter error: exx +0.213 %, eyy +0.177 %, exy +0.037 %, rotation -0.020 deg
+  with the simulator-grid pixel size instead (cell / 256): exx -0.179 %, eyy -0.214 % (the -0.39 % the image-grid calibration removes)
+  strain error against the exact atoms at 231 sites: exx 0.556 %, eyy 0.964 %, exy 0.388 %, rot 0.417 %; non-affine localization error 2.69 x 2.66 pm
+
+  floor: strain spread of a perfect lattice carrying 0.200 px of independent localization noise
+  exx: mean +0.037 %, sd 0.556 %, floor 0.438 %, sd/floor 1.27
+  eyy: mean -0.014 %, sd 0.966 %, floor 0.575 %, sd/floor 1.68
+  exy: mean +0.052 %, sd 0.386 %, floor 0.362 %, sd/floor 1.07
+  rot: mean -0.040 %, sd 0.416 %, floor 0.363 %, sd/floor 1.15
+  sd/floor near 1: the field is at the noise floor, the expected result on an undistorted simulation.  Above 1, the excess is per-column systematic error or real displacement; section 11's split-half test separates them.
+
+
+whole dataset: 7 models x 5 folds, 14364 held-out frames; each frame scored by a checkpoint that never trained on it
+  8947 frames with a lattice in their exact atoms; left out: atoms: need at least 12 finite (x, y) positions 2469, noiseless input 1596, atoms: fewer than two translations carry 75% of the sites 484, atoms: fewer than two translations carry 50% of the sites 357, atoms: supported translations are all collinear 163, atoms: no supported cell whose basis vectors are supported 107
+UNetPP with_n2v fold 4: 100%|██████████| 526/526 [11:55<00:00,  1.36s/frame]
+  [29/35] UNetPP with_n2v fold 4: 526 frames in 11.9 min (1.36 s/frame, 15 CPU proc)
+UNetPP with_n2v fold 5: 100%|██████████| 1810/1810 [22:07<00:00,  1.36frame/s]
+  [30/35] UNetPP with_n2v fold 5: 1810 frames in 22.1 min (0.73 s/frame, 15 CPU proc)
+HRNet with_n2v fold 1: 100%|██████████| 1794/1794 [22:48<00:00,  1.31frame/s]  
+  [31/35] HRNet with_n2v fold 1: 1794 frames in 22.8 min (0.76 s/frame, 15 CPU proc)
+HRNet with_n2v fold 2: 100%|██████████| 1781/1781 [20:55<00:00,  1.42frame/s]  
+  [32/35] HRNet with_n2v fold 2: 1781 frames in 20.9 min (0.71 s/frame, 15 CPU proc)
+HRNet with_n2v fold 4: 100%|██████████| 1768/1768 [22:48<00:00,  1.29frame/s]  
+  [34/35] HRNet with_n2v fold 4: 1768 frames in 22.8 min (0.77 s/frame, 15 CPU proc)
+HRNet with_n2v fold 5: 100%|██████████| 1810/1810 [22:51<00:00,  1.32frame/s]  
+  [35/35] HRNet with_n2v fold 5: 1810 frames in 22.9 min (0.76 s/frame, 15 CPU proc)
+
+over 8947 frames (95 % intervals resample whole atomic structures)
+
+no_n2v AtomSegNet: 8947 frames in 6704 structures, 5 folds
+  lattice found 98.1% [97.8%, 98.5%]; of those, the atoms' cell 99.5% and the atoms' motif 99.5%; median indexed 100.0%; non-affine localization error 3.89 pm (median)
+  cell (lattice parameters, calibrated): median exx +0.082 %, eyy +0.071 %; RMS over frames exx 0.587 % [0.537, 0.637], eyy 0.603 % [0.562, 0.651], exy 0.209 %
+    with the simulator-grid pixel size (cell / 256) instead: median exx -0.308 %, eyy -0.320 %; RMS exx 0.717 %, eyy 0.734 %
+  strain field error at 463348 sites (RMS, %): exx 0.917 [0.898, 0.936], eyy 1.002 [0.984, 1.022], exy 0.696 [0.684, 0.709], rot 0.727 [0.714, 0.741]
+    bias (%): exx -0.0042, eyy -0.0027, exy -0.0032, rot +0.0001;  floor (%): exx 0.890, eyy 0.879, exy 0.624, rot 0.624;  error / floor: exx 1.03, eyy 1.14, exy 1.12, rot 1.16
+    per fold, RMS strain error: fold 1: 0.855 % (1794 frames), fold 2: 0.909 % (1781 frames), fold 3: 0.889 % (1794 frames), fold 4: 0.891 % (1768 frames), fold 5: 0.864 % (1810 frames)
+
+no_n2v HRNet: 8947 frames in 6704 structures, 5 folds
+  lattice found 97.9% [97.5%, 98.2%]; of those, the atoms' cell 99.3% and the atoms' motif 99.3%; median indexed 100.0%; non-affine localization error 4.36 pm (median)
+  cell (lattice parameters, calibrated): median exx +0.048 %, eyy +0.043 %; RMS over frames exx 0.616 % [0.572, 0.661], eyy 0.633 % [0.592, 0.680], exy 0.234 %
+    with the simulator-grid pixel size (cell / 256) instead: median exx -0.343 %, eyy -0.348 %; RMS exx 0.755 %, eyy 0.771 %
+  strain field error at 461030 sites (RMS, %): exx 1.028 [1.006, 1.051], eyy 1.146 [1.126, 1.168], exy 0.767 [0.753, 0.781], rot 0.781 [0.767, 0.796]
+    bias (%): exx +0.0168, eyy +0.0190, exy -0.0015, rot +0.0003;  floor (%): exx 0.991, eyy 0.984, exy 0.698, rot 0.698;  error / floor: exx 1.04, eyy 1.16, exy 1.10, rot 1.12
+    per fold, RMS strain error: fold 1: 0.967 % (1794 frames), fold 2: 1.005 % (1781 frames), fold 3: 1.004 % (1794 frames), fold 4: 1.015 % (1768 frames), fold 5: 0.974 % (1810 frames)
+
+no_n2v SwinUNet: 8947 frames in 6704 structures, 5 folds
+  lattice found 97.4% [97.0%, 97.7%]; of those, the atoms' cell 99.3% and the atoms' motif 99.2%; median indexed 100.0%; non-affine localization error 4.57 pm (median)
+  cell (lattice parameters, calibrated): median exx +0.074 %, eyy +0.073 %; RMS over frames exx 0.619 % [0.566, 0.671], eyy 0.633 % [0.591, 0.683], exy 0.225 %
+    with the simulator-grid pixel size (cell / 256) instead: median exx -0.317 %, eyy -0.318 %; RMS exx 0.742 %, eyy 0.750 %
+  strain field error at 454961 sites (RMS, %): exx 1.152 [1.128, 1.178], eyy 1.272 [1.249, 1.295], exy 0.823 [0.807, 0.840], rot 0.797 [0.782, 0.813]
+    bias (%): exx -0.0045, eyy -0.0028, exy -0.0026, rot -0.0002;  floor (%): exx 1.075, eyy 1.080, exy 0.756, rot 0.756;  error / floor: exx 1.07, eyy 1.18, exy 1.09, rot 1.05
+    per fold, RMS strain error: fold 1: 1.103 % (1794 frames), fold 2: 1.109 % (1781 frames), fold 3: 1.117 % (1794 frames), fold 4: 1.104 % (1768 frames), fold 5: 1.063 % (1810 frames)
+
+no_n2v UNetPP: 8947 frames in 6704 structures, 5 folds
+  lattice found 97.6% [97.3%, 98.0%]; of those, the atoms' cell 99.6% and the atoms' motif 99.6%; median indexed 100.0%; non-affine localization error 4.95 pm (median)
+  cell (lattice parameters, calibrated): median exx +0.051 %, eyy +0.050 %; RMS over frames exx 0.610 % [0.567, 0.656], eyy 0.651 % [0.613, 0.694], exy 0.250 %
+    with the simulator-grid pixel size (cell / 256) instead: median exx -0.340 %, eyy -0.341 %; RMS exx 0.706 %, eyy 0.739 %
+  strain field error at 461104 sites (RMS, %): exx 1.228 [1.205, 1.251], eyy 1.343 [1.321, 1.366], exy 0.902 [0.887, 0.918], rot 0.893 [0.877, 0.910]
+    bias (%): exx +0.0157, eyy +0.0202, exy -0.0018, rot -0.0005;  floor (%): exx 1.183, eyy 1.174, exy 0.832, rot 0.832;  error / floor: exx 1.04, eyy 1.14, exy 1.08, rot 1.07
+    per fold, RMS strain error: fold 1: 1.217 % (1794 frames), fold 2: 1.029 % (1781 frames), fold 3: 1.281 % (1794 frames), fold 4: 1.040 % (1768 frames), fold 5: 1.265 % (1810 frames)
+
+with_n2v AtomSegNet: 8947 frames in 6704 structures, 5 folds
+  lattice found 97.7% [97.4%, 98.1%]; of those, the atoms' cell 99.6% and the atoms' motif 99.6%; median indexed 100.0%; non-affine localization error 4.79 pm (median)
+  cell (lattice parameters, calibrated): median exx +0.101 %, eyy +0.094 %; RMS over frames exx 0.644 % [0.588, 0.696], eyy 0.650 % [0.607, 0.698], exy 0.223 %
+    with the simulator-grid pixel size (cell / 256) instead: median exx -0.290 %, eyy -0.297 %; RMS exx 0.745 %, eyy 0.749 %
+  strain field error at 458899 sites (RMS, %): exx 1.211 [1.186, 1.237], eyy 1.321 [1.296, 1.346], exy 0.888 [0.872, 0.905], rot 0.882 [0.865, 0.900]
+    bias (%): exx +0.0222, eyy +0.0246, exy -0.0006, rot -0.0011;  floor (%): exx 1.189, eyy 1.168, exy 0.830, rot 0.830;  error / floor: exx 1.02, eyy 1.13, exy 1.07, rot 1.06
+    per fold, RMS strain error: fold 1: 1.105 % (1794 frames), fold 2: 1.196 % (1781 frames), fold 3: 1.148 % (1794 frames), fold 4: 1.182 % (1768 frames), fold 5: 1.138 % (1810 frames)
+
+with_n2v HRNet: 8947 frames in 6704 structures, 5 folds
+  lattice found 96.7% [96.3%, 97.1%]; of those, the atoms' cell 99.7% and the atoms' motif 99.6%; median indexed 100.0%; non-affine localization error 5.44 pm (median)
+  cell (lattice parameters, calibrated): median exx +0.015 %, eyy +0.015 %; RMS over frames exx 0.686 % [0.634, 0.735], eyy 0.710 % [0.667, 0.756], exy 0.274 %
+    with the simulator-grid pixel size (cell / 256) instead: median exx -0.376 %, eyy -0.376 %; RMS exx 0.822 %, eyy 0.842 %
+  strain field error at 451960 sites (RMS, %): exx 1.342 [1.315, 1.370], eyy 1.483 [1.458, 1.510], exy 0.965 [0.948, 0.982], rot 0.928 [0.912, 0.946]
+    bias (%): exx +0.0046, eyy +0.0074, exy +0.0002, rot +0.0001;  floor (%): exx 1.297, eyy 1.299, exy 0.916, rot 0.916;  error / floor: exx 1.04, eyy 1.14, exy 1.05, rot 1.01
+    per fold, RMS strain error: fold 1: 1.309 % (1794 frames), fold 2: 1.278 % (1781 frames), fold 3: 1.288 % (1794 frames), fold 4: 1.248 % (1768 frames), fold 5: 1.288 % (1810 frames)
+
+with_n2v UNetPP: 8947 frames in 6704 structures, 5 folds
+  lattice found 97.7% [97.4%, 98.1%]; of those, the atoms' cell 99.6% and the atoms' motif 99.6%; median indexed 100.0%; non-affine localization error 4.92 pm (median)
+  cell (lattice parameters, calibrated): median exx +0.102 %, eyy +0.108 %; RMS over frames exx 0.621 % [0.578, 0.664], eyy 0.657 % [0.618, 0.703], exy 0.249 %
+    with the simulator-grid pixel size (cell / 256) instead: median exx -0.289 %, eyy -0.283 %; RMS exx 0.686 %, eyy 0.713 %
+  strain field error at 460451 sites (RMS, %): exx 1.223 [1.199, 1.249], eyy 1.356 [1.332, 1.382], exy 0.900 [0.884, 0.917], rot 0.888 [0.873, 0.904]
+    bias (%): exx +0.0193, eyy +0.0197, exy -0.0017, rot +0.0002;  floor (%): exx 1.173, eyy 1.173, exy 0.829, rot 0.829;  error / floor: exx 1.04, eyy 1.16, exy 1.09, rot 1.07
+    per fold, RMS strain error: fold 1: 1.142 % (1794 frames), fold 2: 1.198 % (1781 frames), fold 3: 1.015 % (1794 frames), fold 4: 1.259 % (1768 frames), fold 5: 1.237 % (1810 frames)
+
+  cell: the fitted lattice in Angstrom (8a's image-grid pixel size) against the atoms' lattice; this is the absolute lattice-parameter error.  Strain field: relative to each frame's fitted cell, measured minus the exact atoms' field at the same interior sites, on frames whose detections found the atoms' cell.  floor: what the frame's measured column errors would give if they were uncorrelated between neighbours (least squares); error / floor ~ 1: uncorrelated (noise or column-specific bias alike), > 1: anti-correlated neighbours, < 1: smooth errors.  Noise alone vs repeatable bias: the demonstration's floor from independent draws.
