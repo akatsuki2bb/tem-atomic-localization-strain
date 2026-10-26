@@ -1,5 +1,7 @@
 # Atomap v3: atomic-column detection and localization benchmark
 
+**Historical benchmark (50 fold-2 frames).** For the newer, more comprehensive **12,766-frame / 9,575-structure** comparison (AtomSegNet direct F1 **0.904** vs Atomap noisy-input **0.741**), visit the [October 2026 full-population Atomap benchmark](../../results/2026-10-atomap-full-benchmark/README.md). The figures and reference/matching population for the two runs are separate.
+
 **Status:** Curated, traceable excerpt from the 16 October 2026 `atomap_benchmark_v3` output archive. The archive is a result export, **not** source code or a standalone rerunnable pipeline.
 
 ## Purpose and protocol
