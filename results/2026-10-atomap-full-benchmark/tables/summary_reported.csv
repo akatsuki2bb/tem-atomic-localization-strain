@@ -1,0 +1,10 @@
+method,method_id,input_condition,reported_f1_detection_0p1_spacing,reported_rmse_raw_px,reported_rmse_reference_aligned_px,reported_scatter_px,reported_offset_raw_px,reported_offset_aligned_px
+Atomap noisy,atomap_noisy,noisy,0.741,1.626,1.371,1.176,0.736,0.012
+AtomSegNet direct,atomsegnet_direct,noisy,0.904,1.188,1.137,0.835,0.485,0.268
+HRNet direct,hrnet_direct,noisy,0.889,1.291,1.226,,,
+SwinUNet direct,swinunet_direct,noisy,0.86,1.375,1.212,,,
+UNet++ direct,unetpp_direct,noisy,0.836,1.429,1.158,,,
+AtomSegNet N2V,atomsegnet_n2v,noisy,0.833,1.435,1.146,,,
+HRNet N2V,hrnet_n2v,noisy,0.82,1.521,1.282,,,
+UNet++ N2V,unetpp_n2v,noisy,0.854,1.387,1.238,,,
+Atomap clean control,atomap_clean,noise_free_control,0.974,0.84,,,,
