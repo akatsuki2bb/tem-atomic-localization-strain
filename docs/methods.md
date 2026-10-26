@@ -1,6 +1,8 @@
 # Methods overview
 
-> **Updated Oct 2026:** New five-fold, atom-model-ground-truthed localization and lattice/strain analyses are documented in [the calibrated metrology release](../results/2026-10-quantitative-metrology/README.md). The 60-frame exploratory strain description below refers to the **older archived workflow**, not the latest validated simulation benchmark. The latest benchmark supplies dose-response localization and noise-floor comparisons; this is still not experimentally ground-truthed strain.\n\n## Research question
+> **Updated Oct 2026:** New five-fold, atom-model-ground-truthed localization and lattice/strain analyses are documented in [the calibrated metrology release](../results/2026-10-quantitative-metrology/README.md). The 60-frame exploratory strain description below refers to the **older archived workflow**, not the latest validated simulation benchmark. The latest benchmark supplies dose-response localization and noise-floor comparisons; this is still not experimentally ground-truthed strain.
+
+## Research question
 
 The project tests whether a model that improves TEM image appearance also improves atomic-column measurements. Denoising, segmentation, coordinate recovery, and strain diagnostics are therefore evaluated as separate tasks.
 
@@ -46,9 +48,9 @@ Known fractional-pixel translations are applied before inference. After compensa
 
 The archived [19 September follow-up](../runs/20260919-200658/) has a distinct shift table: three frames, three dose settings, **three** repeats, eight shifts, seven model settings, and `raw`/`denoised` coordinate sources. Do not combine its rows with the earlier five-repeat table. Within each run, repeated rows from the same frame/settings are correlated.
 
-### 5. Lattice and strain diagnostics
+### 5. Lattice and strain diagnostics (archived exploratory run)
 
-Detected centers are fitted to a reference lattice. Residual displacement is propagated to local estimates of `exx`, `eyy`, `exy`, and rotation. The current batch contains 60 dense frames per configuration from one selected fold. Because the physical pixel scale is not verified and no imposed strain ground truth is used, this stage demonstrates pipeline operation rather than calibrated strain accuracy.
+Detected centers are fitted to a reference lattice. Residual displacement is propagated to local estimates of `exx`, `eyy`, `exy`, and rotation. The archived batch contains 60 dense frames per configuration from one selected fold. Because the physical pixel scale is not verified and no imposed strain ground truth is used, this stage demonstrates pipeline operation rather than calibrated strain accuracy.
 
 The follow-up's final `strain_reference_space.csv` contains 27 local records after overwrites noted in its event log. Its figures are exploratory and do not add ground-truth deformation validation.
 
