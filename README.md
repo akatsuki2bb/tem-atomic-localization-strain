@@ -120,9 +120,44 @@ All four models emit a denoised image and an atomic-column map, differing in how
 
 </details>
 
-## From masks to coordinates
+## From masks to calibrated atomic coordinates (October 2026 update)
 
-Local maxima of the probability map are refined to sub-pixel centers and matched to reference peaks within 3 px (40 frames, fold 2).
+The earlier segmentation benchmark established that **segmentation overlap and reconstruction quality are different objectives**: direct AtomSegNet led fixed-threshold segmentation (five-fold mean IoU **0.8763**), whereas direct SwinUNet led reconstruction (**30.82 dB PSNR**, **+4.21 dB** relative to the Gaussian reference). Neither metric alone proves quantitative coordinate accuracy. We therefore added a **larger, calibrated sub-pixel localization analysis against simulated atomic-model coordinates**, rather than treating the older 40-frame single-fold peak test as the definitive result.
+
+The updated Poisson benchmark covers **6,143 eligible held-out simulated frames from 5,744 atomic structures** over **five folds and seven training configurations**, at four controlled count scales **D = 5, 20, 100, 1000**. Every scored frame is evaluated by a checkpoint that did not train on it, with additional atomic-structure overlap exclusions. Peak fitting on the **raw noisy frame** is compared separately with fitting on the **network's reconstructed/denoised image**. The N2V label refers to **training warm start**, not the image source used for localization.
+
+### Calibrated sub-pixel bias and pixel locking
+
+![Signed localization bias and first-harmonic pixel locking, measured at simulated D=1000](results/2026-10-quantitative-metrology/figures/residual_bias_and_pixel_locking_D1000.svg)
+
+**Residual signed coordinate bias is distinct from pixel locking:** for direct AtomSegNet fitted on the raw frame at D=1000, x/y bias is **(+0.0216, +0.0028) px** against exact atomic positions on the calibrated image grid; first-harmonic x locking is **+0.0027 px**. Across all seven raw-frame configurations at this count scale, measured x pixel locking is **+0.0013 to +0.0053 px**. Positive locking denotes attraction toward pixel centres. These summary values do *not* reconstruct the historical phase-by-phase shift-response curve.
+
+### What happens when the fitted input is denoised?
+
+![Model-wise measured RMS localization jitter from raw versus reconstructed input, D=1000](results/2026-10-quantitative-metrology/figures/raw_vs_reconstructed_jitter_D1000.svg)
+
+| Training configuration | Raw-frame jitter (pm) | Reconstructed-frame jitter (pm) | Raw x locking (px) | Raw jitter / Poisson CRLB |
+|---|---:|---:|---:|---:|
+| AtomSegNet direct | **0.89** | 0.91 | +0.0027 | **1.83** |
+| HRNet direct | 0.92 | 1.10 | +0.0034 | 1.98 |
+| U-Net++ direct | 0.91 | 1.26 | +0.0049 | 1.93 |
+| SwinUNet direct | 0.90 | **0.75** | +0.0013 | 1.90 |
+| AtomSegNet + N2V warm start | 0.91 | 1.02 | +0.0050 | 1.91 |
+| HRNet + N2V warm start | 1.03 | 1.63 | +0.0053 | 2.41 |
+| U-Net++ + N2V warm start | 0.92 | 1.43 | +0.0037 | 1.99 |
+
+Here **D = 1000 is a simulated count scale at unit intensity**, **not** a calibrated electron dose in e⁻/Å²; it lies above the median/noisy-frame count range of the input dataset (**median D = 18.7; 5th–95th percentile 2.5–60.6**). The displayed picometre results are **repeatability** (RMS variation of repeat estimates), **not absolute localization accuracy**. At D=1000, raw-coordinate outlier rates remain **8.46–9.61%** and raw-weight precision is **1.83–2.41×** the matched Poisson CRLB. Small residual locking therefore does not mean the estimator has reached its information limit.
+
+Unlike the single-fold historical result, this multi-model comparison demonstrates that denoised-input peak fitting is **not uniformly beneficial**: direct SwinUNet improves from **0.90 to 0.75 pm** when using its reconstruction, but direct U-Net++ degrades from **0.91 to 1.26 pm**. Model-specific image reconstruction and coordinate precision must be evaluated separately.
+
+![Measured count-dependent localization repeatability across all seven configurations](results/2026-10-quantitative-metrology/figures/repeatability_vs_dose.svg)
+
+**[Full October run documentation, original logs, 56-row metric table and matched-CRLB figure](results/2026-10-quantitative-metrology/README.md)**
+
+<details>
+<summary>Archived September 2026 single-fold localization and shift diagnostics (historical; not the current headline)</summary>
+
+This earlier test evaluated **40 frames from fold 2**; local maxima were matched to `gaussianMask` reference peaks within a 3 px gate. It used a different reference, population and calibration convention from the October benchmark, so the RMSE values below are **not directly comparable** with the October repeat jitter in pm.
 
 | Direct model | Detection F1 | Matched RMSE (px) | Bias magnitude (px) | Latency (ms) |
 |---|---:|---:|---:|---:|
@@ -131,15 +166,15 @@ Local maxima of the probability map are refined to sub-pixel centers and matched
 | SwinUNet | 0.9174 | 1.377 | 0.302 | 20.37 |
 | HRNet | 0.9067 | 1.405 | 0.347 | 49.26 |
 
-The ordering follows segmentation IoU rather than PSNR. SwinUNet reconstructs intensity best by 4.2 dB yet detects fewer columns than AtomSegNet, though its residual bias is the smallest (0.302 px).
+![Archived controlled fractional-pixel shifts](runs/20260919-200658/figures/subpixel_precision.png)
 
-![Controlled shift and localization diagnostics](runs/20260919-200658/figures/subpixel_precision.png)
+In that archived controlled-shift experiment (0–0.875 px applied and compensated afterward), direct AtomSegNet at simulated D=1000 showed **0.273 px median residual RMSE** when fitting on the raw image and **0.410 px** on its reconstruction. Noise-free detector shift error was **0.017 px** ([archived detector floor](tables/detector_floor.csv)). These describe the **September setup**; they are not updated five-fold values.
 
-Under controlled fractional-pixel shifts (0 to 0.875 px applied before inference and removed after), direct AtomSegNet at dose 1000 gave a median residual RMSE of 0.273 px when fitting on the raw frame, versus 0.410 px on its own denoised output. On noise-free inputs the detector recovered shifts to within 0.017 px ([`tables/detector_floor.csv`](tables/detector_floor.csv)), showing that denoising before peak fitting degraded localization.
+An archived 5,040-evaluation perturbation grid (20 stems × four D levels × three blur values × three tilt values) showed a direct AtomSegNet IoU range of 0.8856–0.8770 over the highest/lowest levels and direct SwinUNet 0.8891–0.8589. See [original single-fold run](runs/20260919-200658/).
 
-Across a 5,040-evaluation perturbation grid (20 stems × 4 doses [20–1000] × 3 blur values × 3 tilt values), direct AtomSegNet held IoU within 0.009 between highest and lowest dose (0.8856 vs. 0.8770), while direct SwinUNet lost 0.030 (0.8891 to 0.8589). Full outputs are in [`runs/20260919-200658/`](runs/20260919-200658/).
+![Archived frame 00257 reconstruction example](runs/20260919-200658/panels/panel_00257.png)
 
-![Side-by-side reconstructions on frame 00257](runs/20260919-200658/panels/panel_00257.png)
+</details>
 
 ## Atomap comparison
 
