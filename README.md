@@ -1,5 +1,19 @@
 # Quantitative TEM with deep learning
 
+## Latest quantitative metrology release (October 2026)
+
+**New: calibrated, five-fold localization, lattice and strain benchmarks.** The updated numerical exports evaluate **6,143 eligible frames** for Poisson-dose localization and **8,947 eligible frames** for lattice/strain reconstruction, all using held-out checkpoints. **Raw-input atomic-column repeatability is 0.89–1.03 pm at simulated count scale D=1000** across seven configurations; direct AtomSegNet finds the correct lattice on **98.1%** of eligible frames, with median calibrated cell errors **+0.082% (xx), +0.071% (yy)** and local strain RMS errors **0.917% (xx), 1.002% (yy), 0.696% (xy)** against exact simulated atoms. Precision remains above a matched Poisson CRLB, and local strain errors are close to their localization-derived reference floor.
+
+**[Read the complete new release, original run exports, seven-model CSV tables and updated figures →](results/2026-10-quantitative-metrology/README.md)**
+
+[![Updated dose-dependent localization repeatability](results/2026-10-quantitative-metrology/figures/repeatability_vs_dose.svg)](results/2026-10-quantitative-metrology/README.md)
+
+[![Updated strain error relative to the coordinate-derived floor](results/2026-10-quantitative-metrology/figures/strain_error_vs_floor.svg)](results/2026-10-quantitative-metrology/README.md)
+
+> **Interpretation:** These are simulations with known atomic models, not experimental ground-truth strain measurements. `D` denotes simulated counts at unit intensity (not a calibrated e⁻/Å² electron dose). The reported sub-pm value is **repeatability**, not absolute position accuracy. The earlier figures, benchmark subsets and training metrics below are retained as historical baselines rather than silently replaced.
+
+---
+
 Denoising, atomic-column segmentation, sub-pixel localization and lattice diagnostics on simulated HAADF-TEM, measured under one protocol.
 
 We compare four dual-head networks of matched size (~9.1 M parameters each) on 14,364 paired 256 × 256 frames from TEM-ImageNet-v1.3. Each model takes a noisy simulated frame and returns a denoised image and an atomic-column probability map. The question is whether a model that reconstructs the image better also measures the lattice better. It does not: across five folds, direct SwinUNet gave the only denoising result above the Gaussian reference (30.82 dB), while direct AtomSegNet gave the highest segmentation IoU (0.8763). Image fidelity and coordinate quality are therefore reported as separate measurements throughout this repository, and no single score is formed from them.
