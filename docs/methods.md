@@ -1,6 +1,6 @@
 # Methods overview
 
-## Research question
+> **Updated Oct 2026:** New five-fold, atom-model-ground-truthed localization and lattice/strain analyses are documented in [the calibrated metrology release](../results/2026-10-quantitative-metrology/README.md). The 60-frame exploratory strain description below refers to the **older archived workflow**, not the latest validated simulation benchmark. The latest benchmark supplies dose-response localization and noise-floor comparisons; this is still not experimentally ground-truthed strain.\n\n## Research question
 
 The project tests whether a model that improves TEM image appearance also improves atomic-column measurements. Denoising, segmentation, coordinate recovery, and strain diagnostics are therefore evaluated as separate tasks.
 
