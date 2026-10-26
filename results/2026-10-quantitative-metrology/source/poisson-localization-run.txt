@@ -1,0 +1,146 @@
+draws from 'noNoise' (14364 frames); bound from 'noBackgroundnoNoise' (14364 frames); reference atomic model on the image grid (x = t x 0.99609 -0.000 px); pixel size per frame from 8a
+
+7 models x 5 folds (all); 14364 frames, 4 D x 2 reps x 2 shifts = 16 draws per frame, 2 localizations each; every frame scored by a checkpoint that never trained on it
+  fold 1: 1211 of 2873 held-out frames; 1201 whose atomic model is in this fold's training split left out
+  fold 2: 1221 of 2873 held-out frames; 1187 whose atomic model is in this fold's training split left out
+  fold 3: 1240 of 2873 held-out frames; 1209 whose atomic model is in this fold's training split left out
+  fold 4: 1236 of 2873 held-out frames; 1193 whose atomic model is in this fold's training split left out
+  fold 5: 1235 of 2872 held-out frames; 1216 whose atomic model is in this fold's training split left out
+  no usable reference: too few gaussianMask columns 1384, too few interior columns 831
+
+6143 frames in 5744 structures; median (5 to 95 %):
+  columns per frame 44 (9 to 207), spacing 30.1 (12.1 to 63.8) px, column sigma 5.76 (3.22 to 14.10) px = FWHM 1.01 (0.87 to 1.62) A
+  bound from 'noBackgroundnoNoise' on 90.7% of frames (high-pass R2 0.979), else 'noNoise'
+  the dataset's own inputs: D = 18.7 (2.5 to 60.6) counts at unit intensity on 6053 noisy frames (90 noiseless); tested D = 5, 20, 100, 1000
+  params: current x dwell 2996 e/probe if pA and us; scan-jitter parameter 0.25 (context only; they do not calibrate D)
+
+detector floor (locate_columns on the noiseless gaussianMask vs the reference): bias (-0.0000, -0.0000) px, rmse 0.0096 px, pixel locking -0.0008 [-0.0009, -0.0008] px, matched 100.0%, spurious 0.0%
+
+95 % intervals resample whole atomic models (frames sharing one are not independent).
+
+no_n2v AtomSegNet: 6143 frames, 5 folds
+  [denoised] 6132 frames (5733 clusters; bound on 6132, pm on 6132)  jitter ~ D^-0.322 [-0.326, -0.317]  (shot-noise limited: -0.5)
+   D=5      jitter 0.7121 [0.7002, 0.7243] px = 5.54 pm  bound 0.8853  ratio 0.80 [0.79, 0.82]  bias (+0.0181, +0.0537)  locking +0.0001  matched 98.9%  spurious 0.8%  outliers 0.83%
+   D=20     jitter 0.3987 [0.3914, 0.4063] px = 2.96 pm  bound 0.4586  ratio 0.87 [0.85, 0.89]  bias (+0.0102, +0.0346)  locking +0.0008  matched 99.9%  spurious 0.4%  outliers 3.84%
+   D=100    jitter 0.2325 [0.2285, 0.2367] px = 1.68 pm  bound 0.2060  ratio 1.13 [1.11, 1.15]  bias (+0.0186, +0.0094)  locking +0.0026  matched 100.0%  spurious 0.5%  outliers 11.08%
+   D=1000   jitter 0.1274 [0.1239, 0.1312] px = 0.91 pm  bound 0.0652  ratio 1.95 [1.91, 2.01]  bias (+0.0398, -0.0268)  locking +0.0044  matched 100.0%  spurious 0.5%  outliers 13.97%
+    per fold at D=1000: fold 1: 0.1274 px / bound 0.0651 (1211 frames), fold 2: 0.1233 px / bound 0.0646 (1221 frames), fold 3: 0.1253 px / bound 0.0652 (1240 frames), fold 4: 0.1276 px / bound 0.0671 (1236 frames), fold 5: 0.1349 px / bound 0.0655 (1235 frames)
+  [raw] 6132 frames (5733 clusters; bound on 6132, pm on 6132)  jitter ~ D^-0.337 [-0.341, -0.331]  (shot-noise limited: -0.5)
+   D=5      jitter 0.7206 [0.7094, 0.7321] px = 5.72 pm  bound 0.8853  ratio 0.81 [0.80, 0.83]  bias (+0.0303, +0.0304)  locking +0.0036  matched 98.9%  spurious 0.9%  outliers 0.62%
+   D=20     jitter 0.4092 [0.4028, 0.4158] px = 3.23 pm  bound 0.4586  ratio 0.89 [0.88, 0.91]  bias (+0.0239, +0.0180)  locking +0.0049  matched 99.9%  spurious 0.5%  outliers 3.66%
+   D=100    jitter 0.2377 [0.2342, 0.2412] px = 1.88 pm  bound 0.2060  ratio 1.15 [1.14, 1.17]  bias (+0.0216, +0.0065)  locking +0.0045  matched 100.0%  spurious 0.4%  outliers 9.45%
+   D=1000   jitter 0.1191 [0.1160, 0.1229] px = 0.89 pm  bound 0.0652  ratio 1.83 [1.78, 1.89]  bias (+0.0216, +0.0028)  locking +0.0027  matched 100.0%  spurious 0.5%  outliers 9.22%
+    per fold at D=1000: fold 1: 0.1136 px / bound 0.0651 (1211 frames), fold 2: 0.1186 px / bound 0.0646 (1221 frames), fold 3: 0.1248 px / bound 0.0652 (1240 frames), fold 4: 0.1194 px / bound 0.0671 (1236 frames), fold 5: 0.1202 px / bound 0.0655 (1235 frames)
+  denoised vs raw weights, % less jitter (6132 paired frames): D=5 +1.2 % [+0.9, +1.5], D=20 +2.6 % [+2.1, +2.9], D=100 +2.2 % [+1.6, +2.7], D=1000 -6.9 % [-8.1, -5.9]
+
+no_n2v UNetPP: 6143 frames, 5 folds
+  [denoised] 6094 frames (5695 clusters; bound on 6094, pm on 6094)  jitter ~ D^-0.296 [-0.301, -0.290]  (shot-noise limited: -0.5)
+   D=5      jitter 0.8558 [0.8414, 0.8707] px = 6.99 pm  bound 0.8460  ratio 1.01 [1.00, 1.02]  bias (-0.0122, +0.0002)  locking +0.0012  matched 97.8%  spurious 1.4%  outliers 0.79%
+   D=20     jitter 0.4886 [0.4817, 0.4962] px = 3.86 pm  bound 0.4502  ratio 1.09 [1.07, 1.10]  bias (+0.0409, -0.0032)  locking +0.0086  matched 99.8%  spurious 0.5%  outliers 3.65%
+   D=100    jitter 0.2904 [0.2860, 0.2949] px = 2.22 pm  bound 0.2030  ratio 1.43 [1.41, 1.45]  bias (+0.0390, -0.0223)  locking +0.0170  matched 100.0%  spurious 0.5%  outliers 12.25%
+   D=1000   jitter 0.1755 [0.1713, 0.1813] px = 1.26 pm  bound 0.0643  ratio 2.73 [2.65, 2.82]  bias (+0.0522, -0.0104)  locking +0.0243  matched 100.0%  spurious 0.7%  outliers 18.97%
+    per fold at D=1000: fold 1: 0.1915 px / bound 0.0650 (1211 frames), fold 2: 0.1582 px / bound 0.0646 (1221 frames), fold 3: 0.2007 px / bound 0.0652 (1240 frames), fold 4: 0.1587 px / bound 0.0671 (1236 frames), fold 5: 0.1705 px / bound 0.0654 (1235 frames)
+  [raw] 6094 frames (5695 clusters; bound on 6094, pm on 6094)  jitter ~ D^-0.353 [-0.360, -0.343]  (shot-noise limited: -0.5)
+   D=5      jitter 0.8199 [0.8057, 0.8345] px = 6.72 pm  bound 0.8460  ratio 0.97 [0.96, 0.98]  bias (-0.0010, +0.0283)  locking +0.0045  matched 97.8%  spurious 1.6%  outliers 0.64%
+   D=20     jitter 0.4479 [0.4410, 0.4557] px = 3.60 pm  bound 0.4502  ratio 0.99 [0.98, 1.01]  bias (+0.0161, +0.0285)  locking +0.0117  matched 99.8%  spurious 0.5%  outliers 2.83%
+   D=100    jitter 0.2520 [0.2479, 0.2564] px = 1.99 pm  bound 0.2030  ratio 1.24 [1.22, 1.26]  bias (+0.0094, +0.0138)  locking +0.0126  matched 100.0%  spurious 0.4%  outliers 8.46%
+   D=1000   jitter 0.1241 [0.1192, 0.1311] px = 0.91 pm  bound 0.0643  ratio 1.93 [1.85, 2.04]  bias (+0.0073, +0.0119)  locking +0.0049  matched 100.0%  spurious 0.5%  outliers 8.66%
+    per fold at D=1000: fold 1: 0.1176 px / bound 0.0650 (1211 frames), fold 2: 0.1194 px / bound 0.0646 (1221 frames), fold 3: 0.1235 px / bound 0.0652 (1240 frames), fold 4: 0.1393 px / bound 0.0671 (1236 frames), fold 5: 0.1255 px / bound 0.0654 (1235 frames)
+  denoised vs raw weights, % less jitter (6094 paired frames): D=5 -4.4 % [-4.7, -4.1], D=20 -9.1 % [-9.7, -8.5], D=100 -15.2 % [-16.2, -14.3], D=1000 -41.4 % [-45.2, -37.5]
+
+no_n2v HRNet: 6143 frames, 5 folds
+  [denoised] 6095 frames (5696 clusters; bound on 6095, pm on 6095)  jitter ~ D^-0.319 [-0.324, -0.314]  (shot-noise limited: -0.5)
+   D=5      jitter 0.8721 [0.8531, 0.8906] px = 7.04 pm  bound 0.8437  ratio 1.03 [1.02, 1.05]  bias (-0.0065, -0.0386)  locking -0.0002  matched 97.5%  spurious 2.0%  outliers 0.86%
+   D=20     jitter 0.4593 [0.4510, 0.4673] px = 3.39 pm  bound 0.4506  ratio 1.02 [1.00, 1.04]  bias (-0.0166, -0.0330)  locking +0.0014  matched 99.8%  spurious 0.5%  outliers 3.39%
+   D=100    jitter 0.2738 [0.2683, 0.2797] px = 1.94 pm  bound 0.2031  ratio 1.35 [1.32, 1.37]  bias (-0.0144, -0.0273)  locking +0.0049  matched 100.0%  spurious 0.4%  outliers 11.80%
+   D=1000   jitter 0.1559 [0.1518, 0.1600] px = 1.10 pm  bound 0.0643  ratio 2.43 [2.36, 2.48]  bias (-0.0005, -0.0142)  locking +0.0113  matched 100.0%  spurious 0.6%  outliers 15.13%
+    per fold at D=1000: fold 1: 0.1402 px / bound 0.0650 (1211 frames), fold 2: 0.1605 px / bound 0.0646 (1221 frames), fold 3: 0.1736 px / bound 0.0652 (1240 frames), fold 4: 0.1575 px / bound 0.0670 (1236 frames), fold 5: 0.1539 px / bound 0.0655 (1235 frames)
+  [raw] 6095 frames (5696 clusters; bound on 6095, pm on 6095)  jitter ~ D^-0.354 [-0.358, -0.348]  (shot-noise limited: -0.5)
+   D=5      jitter 0.8541 [0.8359, 0.8717] px = 6.90 pm  bound 0.8437  ratio 1.01 [0.99, 1.03]  bias (+0.0133, -0.0104)  locking +0.0072  matched 97.5%  spurious 2.2%  outliers 0.71%
+   D=20     jitter 0.4474 [0.4395, 0.4552] px = 3.47 pm  bound 0.4506  ratio 0.99 [0.98, 1.01]  bias (-0.0008, -0.0133)  locking +0.0136  matched 99.9%  spurious 0.5%  outliers 3.09%
+   D=100    jitter 0.2564 [0.2515, 0.2619] px = 1.96 pm  bound 0.2031  ratio 1.26 [1.24, 1.29]  bias (-0.0015, -0.0157)  locking +0.0105  matched 100.0%  spurious 0.4%  outliers 9.22%
+   D=1000   jitter 0.1276 [0.1239, 0.1315] px = 0.92 pm  bound 0.0643  ratio 1.98 [1.93, 2.04]  bias (+0.0057, -0.0038)  locking +0.0034  matched 100.0%  spurious 0.5%  outliers 9.24%
+    per fold at D=1000: fold 1: 0.1253 px / bound 0.0650 (1211 frames), fold 2: 0.1273 px / bound 0.0646 (1221 frames), fold 3: 0.1268 px / bound 0.0652 (1240 frames), fold 4: 0.1295 px / bound 0.0670 (1236 frames), fold 5: 0.1340 px / bound 0.0655 (1235 frames)
+  denoised vs raw weights, % less jitter (6095 paired frames): D=5 -2.1 % [-2.4, -1.8], D=20 -2.7 % [-3.1, -2.2], D=100 -6.8 % [-7.5, -6.1], D=1000 -22.2 % [-23.9, -20.5]
+
+no_n2v SwinUNet: 6143 frames, 5 folds
+  [denoised] 6048 frames (5649 clusters; bound on 6048, pm on 6048)  jitter ~ D^-0.382 [-0.388, -0.377]  (shot-noise limited: -0.5)
+   D=5      jitter 0.8386 [0.8214, 0.8550] px = 6.67 pm  bound 0.8121  ratio 1.03 [1.02, 1.05]  bias (+0.0061, -0.0121)  locking -0.0016  matched 96.7%  spurious 2.3%  outliers 0.66%
+   D=20     jitter 0.4239 [0.4147, 0.4332] px = 3.24 pm  bound 0.4385  ratio 0.97 [0.95, 0.98]  bias (+0.0058, +0.0042)  locking -0.0007  matched 99.7%  spurious 0.6%  outliers 1.80%
+   D=100    jitter 0.2253 [0.2204, 0.2304] px = 1.66 pm  bound 0.1994  ratio 1.13 [1.11, 1.15]  bias (+0.0120, +0.0086)  locking +0.0001  matched 99.9%  spurious 0.5%  outliers 6.17%
+   D=1000   jitter 0.1082 [0.1053, 0.1112] px = 0.75 pm  bound 0.0632  ratio 1.71 [1.67, 1.75]  bias (+0.0182, +0.0096)  locking +0.0005  matched 100.0%  spurious 0.5%  outliers 8.05%
+    per fold at D=1000: fold 1: 0.1078 px / bound 0.0649 (1211 frames), fold 2: 0.1099 px / bound 0.0644 (1221 frames), fold 3: 0.1113 px / bound 0.0651 (1240 frames), fold 4: 0.1067 px / bound 0.0669 (1236 frames), fold 5: 0.1167 px / bound 0.0654 (1235 frames)
+  [raw] 6048 frames (5649 clusters; bound on 6048, pm on 6048)  jitter ~ D^-0.362 [-0.366, -0.358]  (shot-noise limited: -0.5)
+   D=5      jitter 0.8356 [0.8183, 0.8518] px = 6.72 pm  bound 0.8121  ratio 1.03 [1.01, 1.05]  bias (+0.0156, +0.0002)  locking +0.0009  matched 96.7%  spurious 2.5%  outliers 0.69%
+   D=20     jitter 0.4403 [0.4317, 0.4488] px = 3.48 pm  bound 0.4385  ratio 1.00 [0.99, 1.02]  bias (+0.0129, +0.0091)  locking +0.0042  matched 99.7%  spurious 0.7%  outliers 2.89%
+   D=100    jitter 0.2468 [0.2425, 0.2512] px = 1.94 pm  bound 0.1994  ratio 1.24 [1.22, 1.26]  bias (+0.0115, +0.0115)  locking +0.0028  matched 99.9%  spurious 0.5%  outliers 8.74%
+   D=1000   jitter 0.1200 [0.1172, 0.1227] px = 0.90 pm  bound 0.0632  ratio 1.90 [1.86, 1.94]  bias (+0.0123, +0.0124)  locking +0.0013  matched 100.0%  spurious 0.5%  outliers 8.97%
+    per fold at D=1000: fold 1: 0.1211 px / bound 0.0649 (1211 frames), fold 2: 0.1213 px / bound 0.0644 (1221 frames), fold 3: 0.1226 px / bound 0.0651 (1240 frames), fold 4: 0.1202 px / bound 0.0669 (1236 frames), fold 5: 0.1275 px / bound 0.0654 (1235 frames)
+  denoised vs raw weights, % less jitter (6048 paired frames): D=5 -0.4 % [-0.6, -0.1], D=20 +3.7 % [+3.4, +4.1], D=100 +8.7 % [+8.2, +9.2], D=1000 +9.8 % [+9.1, +10.5]
+
+with_n2v AtomSegNet: 6143 frames, 5 folds
+  [denoised] 6107 frames (5708 clusters; bound on 6107, pm on 6107)  jitter ~ D^-0.328 [-0.332, -0.324]  (shot-noise limited: -0.5)
+   D=5      jitter 0.8453 [0.8329, 0.8591] px = 6.92 pm  bound 0.8525  ratio 0.99 [0.98, 1.00]  bias (+0.0103, +0.0024)  locking +0.0014  matched 98.0%  spurious 1.2%  outliers 0.80%
+   D=20     jitter 0.4758 [0.4685, 0.4847] px = 3.73 pm  bound 0.4494  ratio 1.06 [1.04, 1.08]  bias (+0.0229, +0.0037)  locking +0.0018  matched 99.8%  spurious 0.5%  outliers 4.41%
+   D=100    jitter 0.2728 [0.2684, 0.2775] px = 2.02 pm  bound 0.2029  ratio 1.34 [1.32, 1.37]  bias (+0.0538, +0.0044)  locking +0.0063  matched 99.9%  spurious 0.6%  outliers 13.19%
+   D=1000   jitter 0.1465 [0.1432, 0.1499] px = 1.02 pm  bound 0.0643  ratio 2.28 [2.23, 2.34]  bias (+0.0784, +0.0027)  locking +0.0122  matched 100.0%  spurious 0.7%  outliers 16.35%
+    per fold at D=1000: fold 1: 0.1421 px / bound 0.0649 (1211 frames), fold 2: 0.1409 px / bound 0.0645 (1221 frames), fold 3: 0.1505 px / bound 0.0652 (1240 frames), fold 4: 0.1471 px / bound 0.0669 (1236 frames), fold 5: 0.1571 px / bound 0.0655 (1235 frames)
+  [raw] 6107 frames (5708 clusters; bound on 6107, pm on 6107)  jitter ~ D^-0.358 [-0.362, -0.353]  (shot-noise limited: -0.5)
+   D=5      jitter 0.8260 [0.8138, 0.8396] px = 6.76 pm  bound 0.8525  ratio 0.97 [0.96, 0.98]  bias (+0.0236, +0.0156)  locking +0.0038  matched 98.1%  spurious 1.4%  outliers 0.71%
+   D=20     jitter 0.4578 [0.4506, 0.4664] px = 3.72 pm  bound 0.4494  ratio 1.02 [1.00, 1.04]  bias (+0.0123, +0.0146)  locking +0.0125  matched 99.8%  spurious 0.5%  outliers 3.08%
+   D=100    jitter 0.2531 [0.2493, 0.2576] px = 2.02 pm  bound 0.2029  ratio 1.25 [1.23, 1.27]  bias (+0.0087, +0.0105)  locking +0.0127  matched 100.0%  spurious 0.5%  outliers 8.95%
+   D=1000   jitter 0.1227 [0.1197, 0.1264] px = 0.91 pm  bound 0.0643  ratio 1.91 [1.86, 1.96]  bias (+0.0060, +0.0055)  locking +0.0050  matched 100.0%  spurious 0.5%  outliers 8.83%
+    per fold at D=1000: fold 1: 0.1172 px / bound 0.0649 (1211 frames), fold 2: 0.1235 px / bound 0.0645 (1221 frames), fold 3: 0.1263 px / bound 0.0652 (1240 frames), fold 4: 0.1274 px / bound 0.0669 (1236 frames), fold 5: 0.1243 px / bound 0.0655 (1235 frames)
+  denoised vs raw weights, % less jitter (6107 paired frames): D=5 -2.3 % [-2.6, -2.1], D=20 -3.9 % [-4.3, -3.6], D=100 -7.8 % [-8.5, -7.1], D=1000 -19.4 % [-20.9, -17.9]
+
+with_n2v UNetPP: 6143 frames, 5 folds
+  [denoised] 6058 frames (5659 clusters; bound on 6058, pm on 6058)  jitter ~ D^-0.278 [-0.282, -0.273]  (shot-noise limited: -0.5)
+   D=5      jitter 0.8703 [0.8549, 0.8865] px = 7.07 pm  bound 0.8366  ratio 1.04 [1.03, 1.06]  bias (-0.0303, -0.0642)  locking +0.0006  matched 97.7%  spurious 2.2%  outliers 1.03%
+   D=20     jitter 0.4835 [0.4759, 0.4913] px = 3.78 pm  bound 0.4437  ratio 1.09 [1.07, 1.11]  bias (-0.0344, -0.0307)  locking +0.0027  matched 99.8%  spurious 0.6%  outliers 4.45%
+   D=100    jitter 0.2934 [0.2894, 0.2973] px = 2.22 pm  bound 0.2000  ratio 1.47 [1.45, 1.49]  bias (-0.0280, -0.0368)  locking +0.0083  matched 100.0%  spurious 0.6%  outliers 13.69%
+   D=1000   jitter 0.1954 [0.1910, 0.1996] px = 1.43 pm  bound 0.0633  ratio 3.09 [3.01, 3.16]  bias (-0.0584, -0.0006)  locking +0.0219  matched 100.0%  spurious 0.8%  outliers 19.95%
+    per fold at D=1000: fold 1: 0.1777 px / bound 0.0650 (1211 frames), fold 2: 0.1825 px / bound 0.0646 (1221 frames), fold 3: 0.1727 px / bound 0.0652 (1240 frames), fold 4: 0.2182 px / bound 0.0671 (1236 frames), fold 5: 0.2314 px / bound 0.0654 (1235 frames)
+  [raw] 6058 frames (5659 clusters; bound on 6058, pm on 6058)  jitter ~ D^-0.352 [-0.358, -0.345]  (shot-noise limited: -0.5)
+   D=5      jitter 0.8321 [0.8165, 0.8483] px = 6.76 pm  bound 0.8366  ratio 0.99 [0.98, 1.01]  bias (-0.0065, +0.0090)  locking +0.0025  matched 97.7%  spurious 2.4%  outliers 0.74%
+   D=20     jitter 0.4464 [0.4392, 0.4541] px = 3.58 pm  bound 0.4437  ratio 1.01 [0.99, 1.02]  bias (+0.0083, +0.0196)  locking +0.0060  matched 99.8%  spurious 0.6%  outliers 3.65%
+   D=100    jitter 0.2519 [0.2481, 0.2557] px = 1.98 pm  bound 0.2000  ratio 1.26 [1.24, 1.28]  bias (+0.0256, +0.0165)  locking +0.0072  matched 100.0%  spurious 0.5%  outliers 9.62%
+   D=1000   jitter 0.1261 [0.1218, 0.1316] px = 0.92 pm  bound 0.0633  ratio 1.99 [1.93, 2.08]  bias (+0.0181, +0.0210)  locking +0.0037  matched 100.0%  spurious 0.5%  outliers 9.61%
+    per fold at D=1000: fold 1: 0.1240 px / bound 0.0650 (1211 frames), fold 2: 0.1192 px / bound 0.0646 (1221 frames), fold 3: 0.1229 px / bound 0.0652 (1240 frames), fold 4: 0.1391 px / bound 0.0671 (1236 frames), fold 5: 0.1330 px / bound 0.0654 (1235 frames)
+  denoised vs raw weights, % less jitter (6058 paired frames): D=5 -4.6 % [-4.9, -4.3], D=20 -8.3 % [-8.9, -7.7], D=100 -16.5 % [-17.5, -15.5], D=1000 -55.0 % [-58.6, -50.5]
+
+with_n2v HRNet: 6143 frames, 5 folds
+  [denoised] 6076 frames (5677 clusters; bound on 6076, pm on 6076)  jitter ~ D^-0.282 [-0.289, -0.273]  (shot-noise limited: -0.5)
+   D=5      jitter 1.0307 [1.0087, 1.0527] px = 8.08 pm  bound 0.7819  ratio 1.32 [1.30, 1.34]  bias (+0.0030, +0.0178)  locking +0.0008  matched 95.5%  spurious 3.8%  outliers 0.67%
+   D=20     jitter 0.5876 [0.5770, 0.5979] px = 4.40 pm  bound 0.4215  ratio 1.39 [1.37, 1.42]  bias (+0.0126, +0.0133)  locking +0.0023  matched 98.9%  spurious 1.0%  outliers 3.04%
+   D=100    jitter 0.3663 [0.3595, 0.3737] px = 2.66 pm  bound 0.1986  ratio 1.84 [1.81, 1.88]  bias (-0.0167, +0.0287)  locking +0.0155  matched 99.7%  spurious 1.1%  outliers 14.30%
+   D=1000   jitter 0.2258 [0.2174, 0.2365] px = 1.63 pm  bound 0.0634  ratio 3.56 [3.43, 3.74]  bias (-0.0399, +0.0399)  locking +0.0407  matched 99.9%  spurious 1.4%  outliers 22.78%
+    per fold at D=1000: fold 1: 0.2157 px / bound 0.0644 (1211 frames), fold 2: 0.2327 px / bound 0.0642 (1221 frames), fold 3: 0.2374 px / bound 0.0650 (1240 frames), fold 4: 0.2138 px / bound 0.0664 (1236 frames), fold 5: 0.2404 px / bound 0.0651 (1235 frames)
+  [raw] 6076 frames (5677 clusters; bound on 6076, pm on 6076)  jitter ~ D^-0.341 [-0.354, -0.324]  (shot-noise limited: -0.5)
+   D=5      jitter 0.9532 [0.9321, 0.9750] px = 7.59 pm  bound 0.7819  ratio 1.22 [1.20, 1.24]  bias (+0.0085, +0.0287)  locking +0.0043  matched 95.5%  spurious 3.8%  outliers 0.64%
+   D=20     jitter 0.5165 [0.5059, 0.5263] px = 4.04 pm  bound 0.4215  ratio 1.23 [1.20, 1.25]  bias (+0.0175, +0.0390)  locking +0.0147  matched 98.9%  spurious 0.8%  outliers 2.00%
+   D=100    jitter 0.2941 [0.2870, 0.3010] px = 2.22 pm  bound 0.1986  ratio 1.48 [1.45, 1.51]  bias (+0.0057, +0.0307)  locking +0.0149  matched 99.7%  spurious 0.8%  outliers 7.50%
+   D=1000   jitter 0.1531 [0.1425, 0.1682] px = 1.03 pm  bound 0.0634  ratio 2.41 [2.24, 2.65]  bias (-0.0041, +0.0119)  locking +0.0053  matched 99.9%  spurious 0.9%  outliers 8.46%
+    per fold at D=1000: fold 1: 0.1451 px / bound 0.0644 (1211 frames), fold 2: 0.1542 px / bound 0.0642 (1221 frames), fold 3: 0.1452 px / bound 0.0650 (1240 frames), fold 4: 0.1520 px / bound 0.0664 (1236 frames), fold 5: 0.1750 px / bound 0.0651 (1235 frames)
+  denoised vs raw weights, % less jitter (6076 paired frames): D=5 -8.1 % [-8.5, -7.8], D=20 -13.8 % [-14.5, -13.0], D=100 -24.6 % [-25.8, -23.4], D=1000 -47.5 % [-53.1, -40.9]
+
+at D=1000
+condition       arch   source  folds  frames  clusters   slope  slope_lo  slope_hi  jit_top  jit_lo  jit_hi  crb_top  ratio_top  ratio_lo  ratio_hi  efficiency_top  jit_top_pm  jit_pm_lo  jit_pm_hi  crb_top_pm  bias_x  bias_y  bias_x_pm  bias_y_pm  lock_x  lock_lo  lock_hi  matched  spurious
+   no_n2v AtomSegNet denoised      5    6132      5733 -0.3216   -0.3258   -0.3166   0.1274  0.1239  0.1312   0.0652     1.9550    1.9057    2.0112          0.2616      0.9068     0.8834     0.9316      0.5968  0.0398 -0.0268     0.3122    -0.2105  0.0044   0.0037   0.0052   0.9999    0.0054
+   no_n2v AtomSegNet      raw      5    6132      5733 -0.3368   -0.3412   -0.3312   0.1191  0.1160  0.1229   0.0652     1.8282    1.7825    1.8863          0.2992      0.8855     0.8651     0.9066      0.5968  0.0216  0.0028     0.1694     0.0218  0.0027   0.0021   0.0033   0.9999    0.0047
+   no_n2v     UNetPP denoised      5    6094      5695 -0.2962   -0.3009   -0.2902   0.1755  0.1713  0.1813   0.0643     2.7314    2.6548    2.8163          0.1340      1.2577     1.2313     1.2856      0.5833  0.0522 -0.0104     0.4095    -0.0819  0.0243   0.0224   0.0265   0.9997    0.0069
+   no_n2v     UNetPP      raw      5    6094      5695 -0.3532   -0.3604   -0.3429   0.1241  0.1192  0.1311   0.0643     1.9313    1.8532    2.0400          0.2681      0.9056     0.8814     0.9294      0.5833  0.0073  0.0119     0.0569     0.0933  0.0049   0.0040   0.0059   0.9998    0.0049
+   no_n2v      HRNet denoised      5    6095      5696 -0.3191   -0.3237   -0.3142   0.1559  0.1518  0.1600   0.0643     2.4250    2.3640    2.4849          0.1700      1.0979     1.0692     1.1255      0.5827 -0.0005 -0.0142    -0.0036    -0.1115  0.0113   0.0099   0.0127   0.9998    0.0059
+   no_n2v      HRNet      raw      5    6095      5696 -0.3537   -0.3585   -0.3481   0.1276  0.1239  0.1315   0.0643     1.9842    1.9298    2.0440          0.2540      0.9196     0.8972     0.9421      0.5827  0.0057 -0.0038     0.0450    -0.0296  0.0034   0.0024   0.0044   0.9998    0.0050
+   no_n2v   SwinUNet denoised      5    6048      5649 -0.3825   -0.3875   -0.3775   0.1082  0.1053  0.1112   0.0632     1.7120    1.6682    1.7548          0.3412      0.7477     0.7270     0.7683      0.5689  0.0182  0.0096     0.1430     0.0754  0.0005  -0.0000   0.0010   0.9996    0.0046
+   no_n2v   SwinUNet      raw      5    6048      5649 -0.3620   -0.3663   -0.3577   0.1200  0.1172  0.1227   0.0632     1.8980    1.8575    1.9370          0.2776      0.8986     0.8758     0.9207      0.5689  0.0123  0.0124     0.0967     0.0975  0.0013   0.0006   0.0019   0.9996    0.0046
+ with_n2v AtomSegNet denoised      5    6107      5708 -0.3282   -0.3322   -0.3239   0.1465  0.1432  0.1499   0.0643     2.2800    2.2292    2.3386          0.1924      1.0163     0.9924     1.0383      0.5830  0.0784  0.0027     0.6148     0.0214  0.0122   0.0110   0.0134   0.9996    0.0071
+ with_n2v AtomSegNet      raw      5    6107      5708 -0.3577   -0.3622   -0.3526   0.1227  0.1197  0.1264   0.0643     1.9094    1.8636    1.9639          0.2743      0.9053     0.8838     0.9286      0.5830  0.0060  0.0055     0.0468     0.0433  0.0050   0.0040   0.0060   0.9997    0.0054
+ with_n2v     UNetPP denoised      5    6058      5659 -0.2778   -0.2819   -0.2733   0.1954  0.1910  0.1996   0.0633     3.0850    3.0126    3.1606          0.1051      1.4331     1.3977     1.4672      0.5692 -0.0584 -0.0006    -0.4582    -0.0043  0.0219   0.0199   0.0238   0.9998    0.0075
+ with_n2v     UNetPP      raw      5    6058      5659 -0.3523   -0.3583   -0.3446   0.1261  0.1218  0.1316   0.0633     1.9903    1.9269    2.0797          0.2524      0.9173     0.8923     0.9453      0.5692  0.0181  0.0210     0.1418     0.1650  0.0037   0.0027   0.0046   0.9998    0.0053
+ with_n2v      HRNet denoised      5    6076      5677 -0.2822   -0.2893   -0.2729   0.2258  0.2174  0.2365   0.0634     3.5595    3.4271    3.7358          0.0789      1.6344     1.5884     1.6792      0.5747 -0.0399  0.0399    -0.3129     0.3133  0.0407   0.0385   0.0430   0.9988    0.0137
+ with_n2v      HRNet      raw      5    6076      5677 -0.3415   -0.3542   -0.3240   0.1531  0.1425  0.1682   0.0634     2.4134    2.2430    2.6468          0.1717      1.0304     0.9860     1.0795      0.5747 -0.0041  0.0119    -0.0325     0.0936  0.0053   0.0043   0.0063   0.9988    0.0094
+
+  jitter = repeat spread of one column in x (pooled per-column sample SD); bound = Poisson CRLB of the same columns at the same D; ratio = jitter / bound (1 = efficient; unweighted least squares reaches about 1.2 at best; below 1 means prior information or bias, not a broken bound); efficiency = ratio^-2, the share of the Fisher information used.  slope = fitted D exponent: -0.5 is shot-noise limited, 0 a repeatable floor.
+  bias is measured against the atomic model moved onto the image grid with 8a's gaussianMask line, so label inheritance of the 255/256 grid is already removed
+  locking = first-harmonic pixel locking vs the column's own sub-pixel phase: positive pulls estimates towards pixel centres (px).
+  failed localizations (kept in the rates): denoised: too few matches 590, raw: too few matches 584
