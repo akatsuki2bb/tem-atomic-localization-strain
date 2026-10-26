@@ -130,7 +130,7 @@ The updated Poisson benchmark covers **6,143 eligible held-out simulated frames 
 
 ![Signed localization bias and first-harmonic pixel locking, measured at simulated D=1000](results/2026-10-quantitative-metrology/figures/residual_bias_and_pixel_locking_D1000.svg)
 
-**Residual signed coordinate bias is distinct from pixel locking:** for direct AtomSegNet fitted on the raw frame at D=1000, x/y bias is **(+0.0216, +0.0028) px** against exact atomic positions on the calibrated image grid; first-harmonic x locking is **+0.0027 px**. Across all seven raw-frame configurations at this count scale, measured x pixel locking is **+0.0013 to +0.0053 px**. Positive locking denotes attraction toward pixel centres. These summary values do *not* reconstruct the historical phase-by-phase shift-response curve.
+**Residual signed coordinate bias is distinct from pixel locking:** for direct AtomSegNet fitted on the raw frame at D=1000, x/y bias is **(+0.0216, +0.0028) px** against exact atomic positions on the calibrated image grid; first-harmonic x locking is **+0.0027 px**. Across all seven raw-frame configurations at this count scale, measured x pixel locking is **+0.0013 to +0.0053 px**. Positive locking denotes attraction toward pixel centres. These summary values do *not* reconstruct the historical phase-by-phase shift-response curve. The noiseless-mask detector baseline for this updated protocol is **0.0096 px RMSE**, with **100% matched columns and 0% spurious detections**; it is a detector/reference check rather than a neural-network accuracy claim.
 
 ### What happens when the fitted input is denoised?
 
