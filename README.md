@@ -18,7 +18,7 @@ Denoising, atomic-column segmentation, sub-pixel localization and lattice diagno
 
 We compare four dual-head networks of matched size (~9.1 M parameters each) on 14,364 paired 256 × 256 frames from TEM-ImageNet-v1.3. Each model takes a noisy simulated frame and returns a denoised image and an atomic-column probability map. The question is whether a model that reconstructs the image better also measures the lattice better. It does not: across five folds, direct SwinUNet gave the only denoising result above the Gaussian reference (30.82 dB), while direct AtomSegNet gave the highest segmentation IoU (0.8763). Image fidelity and coordinate quality are therefore reported as separate measurements throughout this repository, and no single score is formed from them.
 
-The five-fold summary is in [`tables/benchmark_summary.csv`](tables/benchmark_summary.csv). A complete single-fold diagnostic run in [`runs/20260919-200658/`](runs/20260919-200658/) adds coordinate accuracy, controlled shifts, a perturbation grid and device timings, and [`runs/atomap_benchmark_v3/`](runs/atomap_benchmark_v3/README.md) compares the networks against classical Atomap peak fitting.
+The five-fold summary is in [`tables/benchmark_summary.csv`](tables/benchmark_summary.csv). A complete single-fold diagnostic run in [`runs/20260919-200658/`](runs/20260919-200658/) adds coordinate accuracy, controlled shifts, a perturbation grid and device timings, and the [full 12,766-frame Atomap benchmark](results/2026-10-atomap-full-benchmark/README.md) provides the latest classical-versus-neural localization comparison (with the [archived 50-frame study](runs/atomap_benchmark_v3/README.md) retained separately).
 
 ```mermaid
 flowchart TD
@@ -176,23 +176,41 @@ An archived 5,040-evaluation perturbation grid (20 stems × four D levels × thr
 
 </details>
 
-## Atomap comparison
+## Benchmark against Atomap: 12,766 held-out TEM frames
 
-A separate benchmark ([`runs/atomap_benchmark_v3/`](runs/atomap_benchmark_v3/README.md)) compares classical Atomap peak fitting with the three CNN segmenters on 50 common fold-2 frames against `gaussianMask` peaks, using uncalibrated raw coordinates, a 0.10 × spacing detection gate and a 0.25 × spacing localization gate.
+### Neural atomic-column localization outperforms the noisy-input classical baseline in this benchmark
 
-| Method | Precision | Recall | F1 | Matched RMSE (px) | Localization coverage |
-|---|---:|---:|---:|---:|---:|
-| Atomap / noisy input | 0.185 | 0.409 | 0.255 | 2.155 | 55.6% |
-| Atomap / noise-free control | 0.921 | 0.557 | 0.695 | 0.978 | 56.8% |
-| Atomap / noise- and background-free control | 0.947 | 0.501 | 0.656 | 0.581 | 50.7% |
-| AtomSegNet / direct | 0.801 | 0.900 | 0.847 | 1.187 | 99.6% |
-| HRNet / direct | 0.803 | 0.900 | 0.849 | 1.237 | 99.2% |
-| U-Net++ / direct | 0.801 | 0.896 | 0.846 | 1.247 | 99.2% |
-| AtomSegNet / N2V | 0.762 | 0.850 | 0.804 | 1.339 | 98.3% |
-| HRNet / N2V | 0.755 | 0.844 | 0.797 | 1.375 | 97.7% |
-| U-Net++ / N2V | 0.806 | 0.904 | 0.852 | 1.239 | 99.1% |
+In our newer **five-fold, 12,766-frame comparison** (9,575 simulated structures), direct **AtomSegNet delivers F1 = 0.904** versus **Atomap F1 = 0.741** on common noisy inputs. The localization advantage extends beyond column detection: matched raw-coordinate RMSE falls from **1.626 px to 1.188 px (26.9% lower)**, with **29.0% lower coordinate scatter** (1.176 → 0.835 px).
 
-On noisy input, Atomap reaches F1 0.255 (RMSE 2.155 px) compared with 0.846–0.849 (RMSE 1.187–1.247 px) for the directly trained CNNs. RMSE is conditioned on gated matches, whereas F1 penalizes missed and spurious columns. This is a single-fold comparison on raw coordinates without translation calibration or verified picometre scaling; see [`runs/atomap_benchmark_v3/README.md`](runs/atomap_benchmark_v3/README.md) for scope caveats.
+![Detection F1 on the common noisy simulated TEM benchmark](results/2026-10-atomap-full-benchmark/figures/atomap_f1_full_benchmark.svg)
+
+![Coordinate RMSE against Atomap on the noisy benchmark](results/2026-10-atomap-full-benchmark/figures/atomap_rmse_full_benchmark.svg)
+
+| Same noisy-input benchmark | AtomSegNet, direct | Atomap |
+|---|---:|---:|
+| Detection F1 (0.10 × column spacing) | **0.904** | 0.741 |
+| Raw matched RMSE (px) | **1.188** | 1.626 |
+| Scatter (px) | **0.835** | 1.176 |
+| Reference-aligned RMSE (px) | **1.137** | 1.371 |
+
+### Atomic-column image outputs
+
+The following is an **actual sample from the repository's simulated TEM neural-prediction outputs**, showing atomic-column reference, segmentation and overlay panels (not a paired Atomap run overlay).
+
+![Example atomic-column maps and segmentation overlay](assets/segmentation_example.png)
+
+**[Explore the full Atomap benchmark, seven neural configurations, all figures, reported CSV and exact citations →](results/2026-10-atomap-full-benchmark/README.md)**
+
+The detection tolerance is **0.10 × reference neighbour spacing**, and localization uses one-to-one matches within **0.50 × spacing**. The 12,766-frame experiment uses exact simulated atoms as the primary reference; **reference-assisted frame alignment** is reported as a distinct controlled diagnostic. The clean-input Atomap control (F1 = 0.974) is documented separately from the noisy-input head-to-head result.
+
+The comparison follows **Nord et al. (2017), [Atomap](https://doi.org/10.1186/s40679-017-0042-5)** and **Lin et al. (2021), [TEMImageNet and AtomSegNet](https://doi.org/10.1038/s41598-021-84499-w)**.
+
+<details>
+<summary>Earlier 50-frame, single-fold Atomap archive</summary>
+
+The prior `atomap_benchmark_v3` study used 50 fold-2 simulated frames, Gaussian-mask reference peaks, and different matching settings. Its original CSV, precise method details and results remain available in the [historical Atomap benchmark](runs/atomap_benchmark_v3/README.md). It is preserved for traceability rather than pooled with this later benchmark.
+
+</details>
 
 ## Lattice and strain diagnostics
 
@@ -209,7 +227,7 @@ Detected centers are fitted to a reference lattice and the residual displacement
 | [`notebooks/03_benchmark_and_physics.ipynb`](notebooks/03_benchmark_and_physics.ipynb) | Four-model benchmark and downstream physics analyses |
 | [`tables/`](tables/) | Benchmark summary, centroid metrics, input ablation, detector floor and checkpoint inventory |
 | [`runs/20260919-200658/`](runs/20260919-200658/) | Archived single-fold diagnostic run (tables, figures, panels, manifest and logs) |
-| [`runs/atomap_benchmark_v3/`](runs/atomap_benchmark_v3/) | Atomap peak-fitting baseline comparison |
+| [`results/2026-10-atomap-full-benchmark/`](results/2026-10-atomap-full-benchmark/) | Full-population Atomap comparison, visualizations, citations and transcribed metrics |\n| [`runs/atomap_benchmark_v3/`](runs/atomap_benchmark_v3/) | Historical 50-frame Atomap baseline comparison |
 | [`assets/`](assets/) | Comparison figures, architecture schematics, qualitative strips and strain/transfer examples |
 | [`results/`](results/) | Earlier per-fold localization, precision, strain and transfer output |
 | [`docs/`](docs/) | [`methods.md`](docs/methods.md), [`model-comparison.md`](docs/model-comparison.md), [`reproducibility.md`](docs/reproducibility.md), [`supplementary-results.md`](docs/supplementary-results.md) and [`portfolio-blurb.md`](docs/portfolio-blurb.md) |
