@@ -121,9 +121,71 @@ def strain_floor():
     save(fig, "strain_error_vs_floor.svg")
 
 
+
+def calibrated_subpixel_diagnostics():
+    """Bias and first-harmonic pixel locking on measured D=1000 raw-frame rows."""
+    vals = [
+        next(r for r in P if r["condition"] == cond and r["model"] == model
+             and r["source"] == "raw" and int(r["D"]) == 1000)
+        for cond, model, _, _ in MODELS
+    ]
+    x = np.arange(len(vals))
+    labs = ["AS", "HR", "U++", "Swin", "AS+N2V", "HR+N2V", "U+++N2V"]
+    fig, (ax, lockax) = plt.subplots(1, 2, figsize=(14, 6))
+    ax.scatter(x - 0.11, [float(r["bias_x_px"]) for r in vals],
+               s=48, color="#2e6cab", label="signed x bias", zorder=3)
+    ax.scatter(x + 0.11, [float(r["bias_y_px"]) for r in vals],
+               s=48, color="#e58b56", marker="s", label="signed y bias", zorder=3)
+    ax.axhline(0, color="#555555", linestyle="--")
+    ax.set(xticks=x, xticklabels=labs, ylim=(-0.04, 0.04),
+           ylabel="Signed error against exact atoms (px)",
+           title="Residual coordinate bias after calibration")
+    ax.grid(axis="y", alpha=0.2)
+    ax.legend()
+    lockax.bar(x, [float(r["pixel_locking_px"]) for r in vals],
+               color=[m[3] for m in MODELS])
+    lockax.set(xticks=x, xticklabels=labs, ylim=(0, 0.007),
+               ylabel="First-harmonic pixel locking (px)",
+               title="Pull toward pixel centres")
+    lockax.grid(axis="y", alpha=0.2)
+    fig.suptitle("Raw-frame metrology at D=1000: separate bias and pixel locking")
+    save(fig, "residual_bias_and_pixel_locking_D1000.svg")
+
+
+def raw_vs_reconstructed_jitter():
+    """Distinguish N2V training warm start from the peak-fitting image source."""
+    x = np.arange(len(MODELS))
+    labs = [name for _, _, name, _ in MODELS]
+    raw = [
+        next(float(r["jitter_pm"]) for r in P
+             if r["condition"] == cond and r["model"] == model
+             and r["source"] == "raw" and int(r["D"]) == 1000)
+        for cond, model, _, _ in MODELS
+    ]
+    reconstructed = [
+        next(float(r["jitter_pm"]) for r in P
+             if r["condition"] == cond and r["model"] == model
+             and r["source"] == "denoised" and int(r["D"]) == 1000)
+        for cond, model, _, _ in MODELS
+    ]
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.vlines(x, raw, reconstructed, color="#9aabba", linewidth=2)
+    ax.scatter(x - 0.08, raw, label="Raw frame", color="#2e6cab", s=70, zorder=3)
+    ax.scatter(x + 0.08, reconstructed, label="Reconstructed frame",
+               color="#e58b56", marker="s", s=70, zorder=3)
+    ax.set(xticks=x, xticklabels=[q.replace(" ", "\\n") for q in labs],
+           ylim=(0, 1.8), ylabel="RMS repeat jitter (pm)",
+           title="Raw vs reconstructed image for localization (D=1000)")
+    ax.grid(axis="y", alpha=0.2)
+    ax.legend()
+    save(fig, "raw_vs_reconstructed_jitter_D1000.svg")
+
+
 if __name__ == "__main__":
     dose_jitter()
     crlb_gap()
     lattice_recovery()
     strain_floor()
-    print(f"Saved four measured-data figures to {FIG}")
+    calibrated_subpixel_diagnostics()
+    raw_vs_reconstructed_jitter()
+    print(f"Saved six measured-data figures to {FIG}")
