@@ -31,6 +31,16 @@ The original dataset comprises 14,364 simulated frames. For the dose experiment,
 
 The output is reported as (a) repeat jitter in pixels and pm, (b) signed coordinate bias against exact atoms on the image grid, (c) pixel locking, (d) gated match/spurious/outlier fractions, and (e) the ratio of measured repeat jitter to a matched Poisson Cramér–Rao lower bound (CRLB). Intervals resample complete atomic models so correlated frames are not treated as independent. In the recorded precision analysis, the noiseless-mask detector floor is **0.0096 px RMSE**.
 
+### Updated sub-pixel figures (October 2026)
+
+Two additional figures replace the older single-fold shift-response plot in the repository's main [masks-to-coordinates section](../../README.md#from-masks-to-calibrated-atomic-coordinates-october-2026-update). They are generated **directly from the 56 committed numerical entries**, not from illustrative or fitted curves.
+
+![Calibrated signed coordinate bias and first-harmonic pixel locking from raw-frame localization at D=1000](figures/residual_bias_and_pixel_locking_D1000.svg)
+
+![Raw-frame and reconstructed-frame localization repeat jitter for all seven model configurations at D=1000](figures/raw_vs_reconstructed_jitter_D1000.svg)
+
+The first plot shows residual *signed* x and y bias separately from first-harmonic pixel locking at the same simulated count scale. The second compares the image **source used for peak fitting**, independently of the N2V training-warm-start condition. These do **not** imply that old phase-dependent shift-response trials were recomputed.
+
 ### Raw-image localization, D=1000
 
 | Model | N2V warm start | Jitter (pm) | Jitter / CRLB | x pixel locking (px) | Outliers |
@@ -79,6 +89,6 @@ The existing repo includes **unlabelled** experimental TEM transfer visualizatio
 - [Original, verbatim lattice/strain run export](source/lattice-strain-run.txt).
 - [Localization table across four D values, raw and reconstructed coordinate sources](tables/precision_all_models.csv).
 - [Lattice, cell and local-strain table for all configurations](tables/lattice_strain_all_models.csv).
-- [Replot script](../../scripts/plot_oct2026_metrology.py) regenerates key figures from the committed tables (requires pandas and matplotlib).
+- [Replot script](../../scripts/plot_oct2026_metrology.py) regenerates all six key figures from the committed tables (requires pandas and matplotlib).
 
 **Cautions for paper figures:** keep distinction between (1) repeat jitter, (2) coordinate bias, (3) correct lattice identification, (4) absolute lattice-parameter error, (5) local strain RMS error, and (6) independent-error floor. Earlier idealized “perfect strain recovery” or high-correlation split-half sketches made for presentation discussion were illustrative and **are not part of these measured exports or this release**.
