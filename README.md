@@ -12,6 +12,12 @@
 
 > **Interpretation:** These are simulations with known atomic models, not experimental ground-truth strain measurements. `D` denotes simulated counts at unit intensity (not a calibrated e⁻/Å² electron dose). The reported sub-pm value is **repeatability**, not absolute position accuracy. The earlier figures, benchmark subsets and training metrics below are retained as historical baselines rather than silently replaced.
 
+### Featured: 12,766-frame Atomap localization benchmark
+
+**AtomSegNet direct achieves F1 = 0.904 vs classical Atomap = 0.741 on common noisy TEM inputs, with 26.9% lower matched-coordinate RMSE.** Benchmarked across **9,575 simulated atomic structures**. [Results, atomic-column image gallery and citations](results/2026-10-atomap-full-benchmark/README.md).
+
+[![Full-scale Atomap benchmark detection F1](results/2026-10-atomap-full-benchmark/figures/atomap_f1_full_benchmark.svg)](results/2026-10-atomap-full-benchmark/README.md)
+
 ---
 
 Denoising, atomic-column segmentation, sub-pixel localization and lattice diagnostics on simulated HAADF-TEM, measured under one protocol.
